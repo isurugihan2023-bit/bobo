@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('lofi-audio');
     const playBtn = document.getElementById('lofi-play-btn');
     const visualizer = document.getElementById('lofi-visualizer');
+    const logo = document.getElementById('lofi-logo');
     
     if (audio && playBtn) {
         // Adjust audio volume slightly for a chill background vibe
@@ -169,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     playPromise.then(() => {
                         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                         visualizer.classList.add('active');
+                        if (logo) logo.classList.add('spinning');
                         // Remove the event listeners once it starts playing
                         document.removeEventListener('click', startPlaying);
                         document.removeEventListener('keydown', startPlaying);
@@ -192,10 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 audio.play();
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 visualizer.classList.add('active');
+                if (logo) logo.classList.add('spinning');
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 visualizer.classList.remove('active');
+                if (logo) logo.classList.remove('spinning');
             }
         });
         

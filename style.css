@@ -666,6 +666,26 @@ ul { list-style: none; }
     transform: translateY(-2px);
 }
 
+.lofi-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    animation: lofiSpin 4s linear infinite;
+    animation-play-state: paused; /* Paused by default */
+}
+
+.lofi-logo.spinning {
+    animation-play-state: running; /* Runs when playing */
+}
+
+@keyframes lofiSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .lofi-info {
     display: flex;
     flex-direction: column;
