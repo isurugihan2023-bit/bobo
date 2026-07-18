@@ -641,3 +641,130 @@ ul { list-style: none; }
     justify-content: center;
 }
 
+/* 🎧 Lofi Player */
+.lofi-player {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(13, 17, 28, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 50px;
+    padding: 10px 14px 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(14, 165, 233, 0.1);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.lofi-player:hover {
+    border-color: rgba(14, 165, 233, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(14, 165, 233, 0.2);
+    transform: translateY(-2px);
+}
+
+.lofi-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lofi-title {
+    color: var(--t-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.lofi-subtitle {
+    color: var(--t-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.lofi-visualizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 16px;
+    margin: 0 8px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.lofi-visualizer.active {
+    opacity: 1;
+}
+
+.lofi-visualizer .bar {
+    width: 3px;
+    background: var(--p400);
+    border-radius: 3px;
+    animation: lofiBounce 1.2s ease infinite alternate;
+    transform-origin: bottom;
+    will-change: transform;
+}
+
+/* Pause animation when not playing */
+.lofi-visualizer:not(.active) .bar {
+    animation: none;
+    height: 3px !important;
+}
+
+.lofi-visualizer .bar:nth-child(1) { height: 10px; animation-delay: -0.2s; }
+.lofi-visualizer .bar:nth-child(2) { height: 16px; animation-delay: -0.4s; }
+.lofi-visualizer .bar:nth-child(3) { height: 8px; animation-delay: -0.1s; }
+.lofi-visualizer .bar:nth-child(4) { height: 14px; animation-delay: -0.3s; }
+
+@keyframes lofiBounce {
+    0% { transform: scaleY(0.2); }
+    100% { transform: scaleY(1); }
+}
+
+.lofi-play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--p400), var(--p500));
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+    transition: all 0.2s ease;
+}
+
+.lofi-play-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+}
+
+.lofi-play-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .lofi-player {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 12px 8px 16px;
+        gap: 12px;
+    }
+    
+    .lofi-info {
+        display: none; /* Hide text on small screens to save space */
+    }
+    
+    .lofi-play-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
