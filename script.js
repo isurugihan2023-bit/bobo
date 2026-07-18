@@ -82,11 +82,12 @@ revealOnScroll(); // Trigger once on load
 // --- Real-time Bot Stats Sync ---
 async function fetchBotStats() {
     try {
-        const response = await fetch('http://prem-eu4.bot-hosting.net:21033/stats');
+        // Fetch via Vercel Proxy to avoid HTTPS Mixed Content error
+        const response = await fetch('/api/bot-stats');
         if (!response.ok) return;
         const data = await response.json();
         
-        // Make the bot look extremely popular (Fake Boost)
+        // Use REAL uptime, but make the bot look popular for servers and members
         data.servers = data.servers < 100 ? 100 : data.servers;
         data.members = data.members < 500 ? 500 : data.members;
         
@@ -94,14 +95,15 @@ async function fetchBotStats() {
         document.getElementById('hero-servers').textContent = data.servers + '+';
         document.getElementById('hero-members').textContent = data.members.toLocaleString() + '+';
         document.getElementById('hero-uptime').textContent = data.uptime;
-        // Update fake ping every 3 seconds to avoid flashing too fast
+        
+        // Update fake ping every 3 seconds
         if (!window.lastPingTime || Date.now() - window.lastPingTime > 3000) {
             window.lastFakePing = Math.floor(Math.random() * (50 - 38 + 1)) + 38 + 'ms';
             window.lastPingTime = Date.now();
         }
         document.getElementById('hero-ping').textContent = window.lastFakePing;
 
-        // Update Big Stats section dynamically without breaking animation
+        // Update Big Stats section dynamically
         const serverStat = document.getElementById('server-count-stat');
         if (serverStat && serverStat.textContent !== '0' && serverStat.textContent !== '0+') {
             serverStat.textContent = data.servers + '+';
@@ -111,13 +113,13 @@ async function fetchBotStats() {
             userStat.textContent = data.members.toLocaleString() + '+';
         }
         
-        // Update About Section Ping Card
+        // Update About Section Ping
         const aboutPing = document.getElementById('about-ping');
         if (aboutPing) {
             aboutPing.textContent = window.lastFakePing;
         }
     } catch (e) {
-        console.log("Could not fetch bot stats (is the bot running?)");
+        console.log("Error updating stats", e);
     }
 }
 
