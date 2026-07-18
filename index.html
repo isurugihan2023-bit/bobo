@@ -36,7 +36,7 @@
                     <li><a href="#stats">Stats</a></li>
                 </ul>
                 <div class="nav-cta">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" class="nav-invite" target="_blank">
+                    <a href="#" onclick="openPrivateModal(event)" class="nav-invite">
                         <i class="fab fa-discord"></i> Invite Bobo
                     </a>
                 </div>
@@ -84,7 +84,7 @@
                     The ultimate Discord Music OS. Combining high-fidelity music streaming, interactive UI panels, real-time audio filters, and seamless playback for your community.
                 </p>
                 <div class="hero-btns fade-up" style="animation-delay:0.3s">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" class="btn btn-primary" target="_blank">
+                    <a href="#" onclick="openPrivateModal(event)" class="btn btn-primary">
                         <i class="fab fa-discord"></i> Add to Discord
                     </a>
                 </div>
@@ -377,7 +377,7 @@
                     <h2 class="cta-title">Ready to elevate your music experience?</h2>
                     <p class="cta-sub">Join thousands of servers already using Bobo to listen to high-fidelity audio and interactive music streams.</p>
                     <div class="cta-btns">
-                        <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" class="btn btn-primary" target="_blank"><i class="fab fa-discord"></i> Add to Discord</a>
+                        <a href="#" onclick="openPrivateModal(event)" class="btn btn-primary"><i class="fab fa-discord"></i> Add to Discord</a>
                     </div>
                 </div>
             </div>
@@ -428,6 +428,22 @@
             </div>
         </div>
     </footer>
+
+    <!-- Private Beta Modal -->
+    <div id="privateModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closePrivateModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="modal-title">Access Restricted</h2>
+            <p class="modal-desc">Bobo Bot is currently in <strong>Private Beta</strong> for testing. Public invites are temporarily disabled to ensure maximum stability and performance.</p>
+            <p class="modal-desc">Stay tuned for the public release!</p>
+            <button class="btn btn-primary modal-btn" onclick="closePrivateModal()">Okay, I'll wait</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

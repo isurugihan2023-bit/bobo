@@ -125,3 +125,29 @@ async function fetchBotStats() {
 
 fetchBotStats();
 setInterval(fetchBotStats, 1000);
+
+/* --- Private Beta Modal Logic --- */
+function openPrivateModal(event) {
+    if (event) event.preventDefault();
+    const modal = document.getElementById('privateModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closePrivateModal() {
+    const modal = document.getElementById('privateModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Close modal when clicking outside of the content box
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('privateModal');
+    if (event.target === modal) {
+        closePrivateModal();
+    }
+});
