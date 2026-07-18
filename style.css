@@ -547,16 +547,14 @@ ul { list-style: none; }
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(4, 9, 20, 0.85); /* Dark semi-transparent background */
-    backdrop-filter: blur(12px); /* Glassmorphism blur */
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(4, 9, 20, 0.95); /* Darker solid background since blur is removed for performance */
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     /* Hardware acceleration optimization */
     will-change: opacity;
     transform: translateZ(0); 
@@ -568,17 +566,17 @@ ul { list-style: none; }
 }
 
 .modal-content {
-    background: rgba(14, 21, 38, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 195, 255, 0.1) inset;
+    background: #0e1526;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Simplified shadow for performance */
     border-radius: 24px;
     padding: 40px;
     max-width: 420px;
     width: 90%;
     text-align: center;
     position: relative;
-    transform: scale(0.95) translateY(20px);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.3s ease-out; /* Simpler transition for CPU rendering */
     /* Hardware acceleration optimization */
     will-change: transform;
     backface-visibility: hidden;
@@ -595,25 +593,25 @@ ul { list-style: none; }
     color: var(--t-muted);
     font-size: 1.2rem;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.2s ease; /* Removed rotate transform for performance */
 }
 
 .modal-close:hover {
     color: var(--t-white);
-    transform: rotate(90deg);
 }
 
 .modal-icon {
     font-size: 3rem;
     color: var(--p400);
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px rgba(0, 195, 255, 0.4));
-    animation: pulse-icon 2s infinite ease-in-out alternate;
+    /* Removed drop-shadow filter which kills CPU */
+    animation: pulse-icon 2.5s infinite ease-in-out alternate;
+    will-change: transform;
 }
 
 @keyframes pulse-icon {
-    0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0, 195, 255, 0.3)); }
-    100% { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.6)); }
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
 }
 
 .modal-title {
