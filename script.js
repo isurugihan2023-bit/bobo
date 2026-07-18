@@ -152,33 +152,4 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// 🎧 Lofi Player Logic
-document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('lofi-audio');
-    const playBtn = document.getElementById('lofi-play-btn');
-    const visualizer = document.getElementById('lofi-visualizer');
-    
-    if (audio && playBtn) {
-        // Adjust audio volume slightly for a chill background vibe
-        audio.volume = 0.4;
-        
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                visualizer.classList.add('active');
-            } else {
-                audio.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                visualizer.classList.remove('active');
-            }
-        });
-        
-        // Handle stream errors
-        audio.addEventListener('error', () => {
-            console.error("Error playing Lofi stream.");
-            playBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
-            visualizer.classList.remove('active');
-        });
-    }
-});
+// (Removed custom lofi player logic because we are now using a Spotify embed)
