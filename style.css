@@ -671,7 +671,6 @@ ul { list-style: none; }
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.1);
     animation: lofiSpin 4s linear infinite;
     animation-play-state: paused; /* Paused by default */
