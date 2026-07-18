@@ -5,9 +5,9 @@ section { scroll-margin-top: 90px; }
 
 /* â”€â”€ Tokens (CYAN THEME) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
-    --bg:       #080b12;
-    --bg2:      #0d111c;
-    --bg3:      #121826;
+    --bg:       rgba(8, 11, 18, 0.45); /* Transparent for video background */
+    --bg2:      rgba(13, 17, 28, 0.65);
+    --bg3:      rgba(18, 24, 38, 0.75);
     --border:   rgba(14, 165, 233, 0.15);
     --border2:  rgba(14, 165, 233, 0.3);
     
@@ -24,9 +24,48 @@ section { scroll-margin-top: 90px; }
     --mono:     'JetBrains Mono', monospace;
 }
 
+/* 📹 Video Background Styles */
+.video-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-bg-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Prevent clicks on the video */
+    /* Ensure it covers the screen (16:9 aspect ratio trick) */
+    @media (min-aspect-ratio: 16/9) {
+        height: 56.25vw;
+    }
+    @media (max-aspect-ratio: 16/9) {
+        width: 177.78vh;
+    }
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 11, 18, 0.6); /* Darken the video for text readability */
+    z-index: 1;
+}
+
 body {
     font-family: var(--font);
-    background-color: var(--bg);
+    background-color: transparent; /* Changed to transparent so video shows */
     color: var(--text);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
