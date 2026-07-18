@@ -152,4 +152,58 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// (Removed custom lofi player logic because we are now using a Spotify embed)
+// 🎧 Lofi Player Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('lofi-audio');
+    const playBtn = document.getElementById('lofi-play-btn');
+    const visualizer = document.getElementById('lofi-visualizer');
+    
+    if (audio && playBtn) {
+        // Adjust audio volume slightly for a chill background vibe
+        audio.volume = 0.4;
+        
+        const startPlaying = () => {
+            if (audio.paused) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        visualizer.classList.add('active');
+                        // Remove the event listeners once it starts playing
+                        document.removeEventListener('click', startPlaying);
+                        document.removeEventListener('keydown', startPlaying);
+                    }).catch(err => {
+                        console.log("Autoplay blocked by browser. Waiting for user interaction.");
+                    });
+                }
+            }
+        };
+
+        // Attempt Autoplay as soon as possible
+        startPlaying();
+
+        // Fallback: Start playing on first click or keypress anywhere on the website
+        document.addEventListener('click', startPlaying, { once: true });
+        document.addEventListener('keydown', startPlaying, { once: true });
+        
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the document click listener from firing immediately
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                visualizer.classList.add('active');
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                visualizer.classList.remove('active');
+            }
+        });
+        
+        // Handle stream errors
+        audio.addEventListener('error', () => {
+            console.error("Error playing Lofi stream.");
+            playBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+            visualizer.classList.remove('active');
+        });
+    }
+});

@@ -767,21 +767,3 @@ ul { list-style: none; }
         font-size: 1rem;
     }
 }
-
-
-/* ?? Spotify Floating Player */
-.spotify-floating-player {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 320px;
-    height: 152px;
-    z-index: 1000;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-}
-
-.spotify-floating-player:hover {
-    transform: translateY(-5px);
-}
