@@ -43,12 +43,30 @@ ul { list-style: none; }
 
 /* Gradient text - beautiful cyan/blue gradient */
 .grad {
-    background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 40%, #0284c7 100%);
+    background: linear-gradient(135deg, #7dd3fc 0%, #0284c7 25%, #38bdf8 50%, #0284c7 75%, #7dd3fc 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: var(--p400); /* Fallback */
+    animation: textShimmer 4s linear infinite;
     text-shadow: 0 0 25px rgba(56, 189, 248, 0.35); /* Performant glow */
+}
+
+/* White shimmering text */
+.shimmer-white {
+    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 25%, #ffffff 50%, #94a3b8 75%, #ffffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #ffffff; /* Fallback */
+    animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 /* Section label pill */
