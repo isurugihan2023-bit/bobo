@@ -152,7 +152,7 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// 🎧 Lofi Player Logic
+// 🎵 Lofi Player Logic
 document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('lofi-audio');
     const playBtn = document.getElementById('lofi-play-btn');
@@ -163,43 +163,40 @@ document.addEventListener('DOMContentLoaded', () => {
         // Adjust audio volume slightly for a chill background vibe
         audio.volume = 0.4;
         
-        const startPlaying = () => {
-            if (audio.paused) {
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                        visualizer.classList.add('active');
-                        if (logo) logo.classList.add('spinning');
-                        // Remove the event listeners once it starts playing
-                        document.removeEventListener('click', startPlaying);
-                        document.removeEventListener('keydown', startPlaying);
-                    }).catch(err => {
-                        console.log("Autoplay blocked by browser. Waiting for user interaction.");
-                    });
-                }
+        function unlockLofiAudio() {
+            audio.muted = false;
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(err => {
+                    console.warn('Lofi playback blocked:', err);
+                });
             }
-        };
+        }
 
-        // Attempt Autoplay as soon as possible
-        startPlaying();
+        // Fix 2: Unmute and play on first gesture
+        document.addEventListener('click', unlockLofiAudio, { once: true });
+        document.addEventListener('touchstart', unlockLofiAudio, { once: true, passive: true });
 
-        // Fallback: Start playing on first click or keypress anywhere on the website
-        document.addEventListener('click', startPlaying, { once: true });
-        document.addEventListener('keydown', startPlaying, { once: true });
+        // Update UI when audio actually plays/pauses
+        audio.addEventListener('play', () => {
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            visualizer.classList.add('active');
+            if (logo) logo.classList.add('spinning');
+        });
+
+        audio.addEventListener('pause', () => {
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            visualizer.classList.remove('active');
+            if (logo) logo.classList.remove('spinning');
+        });
         
         playBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent the document click listener from firing immediately
-            if (audio.paused) {
+            if (audio.paused || audio.muted) {
+                audio.muted = false;
                 audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                visualizer.classList.add('active');
-                if (logo) logo.classList.add('spinning');
             } else {
                 audio.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                visualizer.classList.remove('active');
-                if (logo) logo.classList.remove('spinning');
             }
         });
         
