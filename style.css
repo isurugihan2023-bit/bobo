@@ -804,3 +804,88 @@ ul { list-style: none; }
         font-size: 1rem;
     }
 }
+
+/* System Status Board */
+.status-board {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    background: #12141d;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: all 0.3s ease;
+}
+
+.status-row:hover {
+    background: #171a25;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.status-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(250, 204, 21, 0.1);
+    color: #facc15;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: 16px;
+}
+
+.status-icon.search {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0ea5e9;
+}
+
+.status-details {
+    flex: 1;
+}
+
+.status-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.status-meta {
+    font-size: 0.85rem;
+    color: #8b949e;
+}
+
+.status-state {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #23a559; /* Green for operational */
+}
+
+.status-state.degraded {
+    color: #eab308;
+}
+
+.status-state.offline {
+    color: #ef4444;
+}
+
+.status-row.loading {
+    justify-content: center;
+    color: #8b949e;
+    font-style: italic;
+    background: transparent;
+    border: none;
+}
+
