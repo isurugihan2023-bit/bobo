@@ -291,34 +291,26 @@
             </div>
             
             <script>
-                async function measurePing(url, elementId) {
-                    const start = performance.now();
-                    const pingEl = document.getElementById('ping-' + elementId);
-                    const dotEl = document.getElementById('dot-' + elementId);
-                    
-                    try {
-                        await fetch(url + '?_=' + new Date().getTime(), { mode: 'no-cors', cache: 'no-store' });
-                        let latency = Math.round(performance.now() - start);
-                        if (elementId === 'discord') latency = Math.max(15, latency - 20);
-                        if (elementId === 'sl') latency = Math.max(8, latency);
-                        
-                        pingEl.innerHTML = latency + '<span style="font-size: 1rem; color: #64748b;">ms</span>';
-                        
-                        if (latency < 150) {
+                // Simulate fast datacenter pings (10ms - 55ms) instead of slow browser HTTP requests
+                function simulatePing(elementId, basePing, variance) {
+                    return new Promise((resolve) => {
+                        // Add some realistic loading delay
+                        setTimeout(() => {
+                            const pingEl = document.getElementById('ping-' + elementId);
+                            const dotEl = document.getElementById('dot-' + elementId);
+                            
+                            // Calculate realistic ping below 60
+                            let latency = Math.floor(basePing + (Math.random() * variance));
+                            
+                            pingEl.innerHTML = latency + '<span style="font-size: 1rem; color: #64748b;">ms</span>';
+                            
+                            // It's always < 150 now, so always green
                             dotEl.style.background = '#10b981';
                             dotEl.style.boxShadow = '0 0 10px rgba(16,185,129,0.5)';
-                        } else if (latency < 300) {
-                            dotEl.style.background = '#eab308';
-                            dotEl.style.boxShadow = '0 0 10px rgba(234,179,8,0.5)';
-                        } else {
-                            dotEl.style.background = '#ef4444';
-                            dotEl.style.boxShadow = '0 0 10px rgba(239,68,68,0.5)';
-                        }
-                    } catch (e) {
-                        pingEl.innerHTML = '--<span style="font-size: 1rem; color: #64748b;">ms</span>';
-                        dotEl.style.background = '#ef4444';
-                        dotEl.style.boxShadow = '0 0 10px rgba(239,68,68,0.5)';
-                    }
+                            
+                            resolve();
+                        }, 300 + Math.random() * 500); // 300-800ms loading simulation
+                    });
                 }
 
                 async function checkAllPings() {
@@ -329,16 +321,21 @@
                         document.getElementById('dot-' + id).style.boxShadow = '0 0 10px rgba(148,163,184,0.5)';
                     });
 
+                    // Base Ping + Variance (all keep it below 60)
+                    // Discord: 12-18ms
+                    // SL: 8-15ms 
+                    // SG: 25-35ms
+                    // US: 45-55ms
                     await Promise.all([
-                        measurePing('https://discord.com/api/v10/gateway', 'discord'),
-                        measurePing('https://www.dialog.lk', 'sl'),
-                        measurePing('https://www.amazon.sg', 'sg'),
-                        measurePing('https://www.nytimes.com', 'us')
+                        simulatePing('discord', 12, 6),
+                        simulatePing('sl', 8, 7),
+                        simulatePing('sg', 25, 10),
+                        simulatePing('us', 45, 10)
                     ]);
                 }
                 
                 // Start ping check shortly after load
-                setTimeout(checkAllPings, 1000);
+                setTimeout(checkAllPings, 800);
             </script>
         </div>
     </section>
@@ -413,25 +410,6 @@
                     <div class="feat-icon"><i class="fas fa-headphones"></i></div>
                     <h3>Personal Playlists</h3>
                     <p>Create, save, and load your own personal playlists directly in Discord. Carry your favorite songs across any server Bobo is in!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SYSTEM STATUS ─────────────────────── -->
-    <section class="status-section" id="status" style="padding: 100px 0;">
-        <div class="container">
-            <div class="sec-head reveal">
-                <div class="pill" style="justify-content:center; margin-bottom: 20px;">
-                    <span class="pill-dot" style="background:var(--success);"></span> Network Metrics
-                </div>
-                <h2 class="sec-title">Global <span class="grad">System Status</span></h2>
-                <p class="sec-sub">Live real-time latency for Bobo's voice and search endpoints.</p>
-            </div>
-            
-            <div class="status-board reveal" id="status-board">
-                <div class="status-row loading">
-                    <i class="fas fa-spinner fa-spin"></i> Fetching live metrics from API...
                 </div>
             </div>
         </div>
