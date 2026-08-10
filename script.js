@@ -123,34 +123,9 @@ async function fetchBotStats() {
     }
 }
 
+
 fetchBotStats();
 setInterval(fetchBotStats, 1000);
-
-/* --- Private Beta Modal Logic --- */
-function openPrivateModal(event) {
-    if (event) event.preventDefault();
-    const modal = document.getElementById('privateModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-}
-
-function closePrivateModal() {
-    const modal = document.getElementById('privateModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-}
-
-// Close modal when clicking outside of the content box
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('privateModal');
-    if (event.target === modal) {
-        closePrivateModal();
-    }
-});
 
 // 🎵 Lofi Player Logic
 document.addEventListener('DOMContentLoaded', () => {
@@ -160,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo = document.getElementById('lofi-logo');
     
     if (audio && playBtn) {
-        // Adjust audio volume slightly for a chill background vibe
         audio.volume = 0.4;
         
         function unlockLofiAudio() {
@@ -173,11 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Fix 2: Unmute and play on first gesture
         document.addEventListener('click', unlockLofiAudio, { once: true });
         document.addEventListener('touchstart', unlockLofiAudio, { once: true, passive: true });
 
-        // Update UI when audio actually plays/pauses
         audio.addEventListener('play', () => {
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
             visualizer.classList.add('active');
@@ -191,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         playBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent the document click listener from firing immediately
+            e.stopPropagation();
             if (audio.paused || audio.muted) {
                 audio.muted = false;
                 audio.play();
@@ -200,13 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Handle stream errors
         audio.addEventListener('error', () => {
             console.error("Error playing Lofi stream.");
             playBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
             visualizer.classList.remove('active');
         });
     }
-
-
 });

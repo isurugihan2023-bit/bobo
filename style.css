@@ -24,10 +24,14 @@ section { scroll-margin-top: 90px; }
     --mono:     'JetBrains Mono', monospace;
 }
 
+/* Simple, Super Smooth CSS Gradient Animation */
 body {
     font-family: var(--font);
     background-color: var(--bg);
     color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -888,4 +892,166 @@ ul { list-style: none; }
     background: transparent;
     border: none;
 }
+
+
+/* ── GETTING STARTED ────────────────────────────────── */
+.gs-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.gs-step {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+}
+
+.gs-step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+.gs-step-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(14, 165, 233, 0.1);
+    border: 1.5px solid rgba(14, 165, 233, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--p400);
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+    transition: all 0.3s ease;
+    gap: 4px;
+}
+
+.gs-step:hover .gs-step-icon {
+    background: rgba(14, 165, 233, 0.18);
+    border-color: rgba(14, 165, 233, 0.5);
+    box-shadow: 0 0 28px rgba(14, 165, 233, 0.2);
+    transform: scale(1.05);
+}
+
+.gs-step-line {
+    width: 2px;
+    flex: 1;
+    min-height: 40px;
+    background: linear-gradient(to bottom, rgba(14, 165, 233, 0.3), rgba(14, 165, 233, 0.05));
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.gs-step-body {
+    flex: 1;
+    padding-bottom: 52px;
+}
+
+.gs-step:last-child .gs-step-body {
+    padding-bottom: 0;
+}
+
+.gs-step-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--p400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.gs-step-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.gs-step-desc {
+    font-size: 0.9rem;
+    color: var(--sub);
+    line-height: 1.65;
+}
+
+.gs-code {
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.25);
+    color: var(--p400);
+    font-family: var(--mono);
+    font-size: 0.88em;
+    padding: 2px 7px;
+    border-radius: 5px;
+}
+
+.gs-mockup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gs-mockup:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(14, 165, 233, 0.15);
+}
+
+.gs-mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gs-mockup-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.gs-mockup-body {
+    background: var(--bg3);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: transparent;
+    border: 1.5px solid rgba(14, 165, 233, 0.35);
+    color: var(--p400);
+}
+
+.btn-outline:hover {
+    background: rgba(14, 165, 233, 0.08);
+    border-color: rgba(14, 165, 233, 0.6);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .gs-step { gap: 16px; }
+    .gs-step-icon { width: 40px; height: 40px; font-size: 1rem; border-radius: 10px; }
+    .gs-step-title { font-size: 1.05rem; }
+}
+
 
