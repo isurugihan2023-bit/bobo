@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/bot-stats",
-      "destination": "http://160.191.77.60:5460/stats"
+      "destination": "http://46.247.108.191:30031/stats"
     }
   ]
 }
