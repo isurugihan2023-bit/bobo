@@ -1,8 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/bot-stats",
-      "destination": "http://46.247.108.191:30031/stats"
-    }
-  ]
-}
+{"headers": [{"headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}, {"key": "Content-Type", "value": "image/webp"}], "source": "/images/(.*)\\.webp"}, {"headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}], "source": "/images/(.*)\\.png"}, {"headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}], "source": "/style.css"}, {"headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}], "source": "/script.js"}], "rewrites": [{"destination": "http://46.247.108.191:30031/stats", "source": "/api/bot-stats"}]}

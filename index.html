@@ -11,23 +11,65 @@
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0284c7">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+    <!-- Icons: Font Awesome Free 6.4.0 (CC BY 4.0) by Fonticons, Inc. — inlined as SVG for performance -->
+    <link rel="preload" as="image" href="images/bobobo-96.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin fetchpriority="high">
+
+    <style>
+    /* Self-hosted variable fonts (latin subset only): no third-party font chain, font-display:swap, metric-matched fallbacks to avoid layout shift */
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('fonts/manrope-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Manrope Fallback';src:local('Arial'),local('Roboto'),local('Helvetica Neue');size-adjust:102.21%;ascent-override:106.6%;descent-override:30%;line-gap-override:0%}
+    @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'JetBrains Mono Fallback';src:local('Courier New'),local('Courier');size-adjust:100%;ascent-override:102%;descent-override:30%;line-gap-override:0%}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    section{scroll-margin-top:90px}
+    :root{--bg:#080b12;--bg2:#0d111c;--bg3:#121826;--border:rgba(14,165,233,.15);--border2:rgba(14,165,233,.3);--p400:#38bdf8;--p500:#0ea5e9;--p600:#0284c7;--p700:#0369a1;--muted:#8595ad;--sub:#94a3b8;--text:#f8fafc;--t-white:#f8fafc;--t-muted:#8595ad;--p300:#7dd3fc;--font:'Manrope','Manrope Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono','JetBrains Mono Fallback',ui-monospace,monospace}
+    body{font-family:var(--font);background-color:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}ul{list-style:none}
+    .container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+    .skip-link{position:absolute;left:16px;top:-48px;z-index:10001;background:#0284c7;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;transition:top .2s ease}
+    .skip-link:focus{top:12px}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:18px 0;background:rgba(8,11,18,.98);border-bottom:1px solid transparent}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+    .nav-logo img{width:32px;height:32px;border-radius:8px;aspect-ratio:1/1}
+    .nav-links{display:flex;gap:32px}
+    .nav-links a{color:var(--muted);font-size:.9rem;font-weight:500}
+    .nav-invite{padding:8px 18px;border-radius:9px;background:linear-gradient(135deg,var(--p600),var(--p500));color:#fff;font-size:.87rem;font-weight:600}
+    .hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+    .hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:center;justify-content:center;padding:80px 0 40px;overflow:hidden}
+    .hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hero-heading{font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;margin-bottom:16px;max-width:820px}
+    .hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--sub);max-width:660px;line-height:1.65;margin-bottom:28px}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
+    .btn-primary{background:linear-gradient(135deg,var(--p500) 0%,var(--p600) 100%);color:#fff;border:1px solid rgba(255,255,255,.1)}
+    .hero-pill{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(145deg,rgba(30,41,59,.7),rgba(15,23,42,.9));padding:6px 24px 6px 6px;border-radius:50px;border:1px solid rgba(14,165,233,.2);margin-bottom:30px}
+    .pill-avatar-wrapper{position:relative;display:flex;align-items:center;justify-content:center}
+    .pill-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;aspect-ratio:1/1}
+    .hero-chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .chip{display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);font-size:.88rem;font-weight:600}
+    .chip-val{font-size:1.1rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;min-width:3ch;min-height:1.4em;display:inline-block}
+    .fa-svg{height:1em;width:auto;flex-shrink:0;vertical-align:-.125em;overflow:visible}
+    img{max-width:100%}
+    </style>
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- ── NAVBAR ─────────────────────── -->
-    <nav class="nav" id="navbar">
+    <header class="site-header" style="display:contents">
+    <nav class="nav" id="navbar" aria-label="Primary">
         <div class="container">
             <div class="nav-inner">
-                <a href="#home" class="nav-logo">
-                    <img src="images/bobobo.png" alt="Bobo" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'">
+                <a href="#home" class="nav-logo" aria-label="BOBO home">
+                    <picture><source srcset="images/bobobo-96.webp" type="image/webp"><img src="images/bobobo.png" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
                     <span>BOBO</span>
-                    <span class="nav-logo-dot"></span>
+                    <span class="nav-logo-dot" aria-hidden="true"></span>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -36,37 +78,39 @@
                     <li><a href="#stats">Stats</a></li>
                 </ul>
                 <div class="nav-cta">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener" class="nav-invite">
-                        <i class="fab fa-discord"></i> Invite BOBO
+                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener" class="nav-invite" aria-label="Invite BOBO to your Discord server">
+                        <svg class="fa-svg fa-discord" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg> Invite BOBO
                     </a>
                 </div>
-                <button class="hamburger" aria-label="menu"><i class="fas fa-bars"></i></button>
+                <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navbar"><svg class="fa-svg fa-bars" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></button>
             </div>
         </div>
     </nav>
+    </header>
 
+    <main id="main-content">
     <!-- ── HERO ─────────────────────── -->
-    <section class="hero" id="home">
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-        <div class="hero-glow"></div>
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+        <div class="ambient-orb orb-1" aria-hidden="true"></div>
+        <div class="ambient-orb orb-2" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
         <div class="container">
             <div class="hero-inner">
                 <!-- Next Level Hero Pill -->
                 <div class="hero-pill fade-up" style="animation-delay:0s">
                     <div class="pill-avatar-wrapper">
-                        <img src="images/bobobo.png" alt="Bobo" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'">
-                        <div class="pill-status">
-                            <div class="pill-status-pulse"></div>
+                        <picture><source srcset="images/bobobo-96.webp" type="image/webp"><img src="images/bobobo.png" alt="" width="44" height="44" fetchpriority="high" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                        <div class="pill-status" aria-hidden="true">
+                            <div class="pill-status-pulse" aria-hidden="true"></div>
                         </div>
                     </div>
                     <div class="pill-info">
                         <div class="pill-name">
                             BOBO
-                            <span class="pill-bot-tag"><i class="fas fa-check"></i> BOT</span>
+                            <span class="pill-bot-tag"><svg class="fa-svg fa-check" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> BOT</span>
                         </div>
                         <div class="pill-activity">
-                            <div class="audio-bars">
+                            <div class="audio-bars" aria-hidden="true">
                                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
                             </div>
                             Playing <span>High Fidelity Music</span>
@@ -75,7 +119,7 @@
                 </div>
                 <div class="fade-up" style="animation-delay:0.1s">
                     <div class="hero-float">
-                        <h1 class="hero-heading">
+                        <h1 class="hero-heading" id="hero-heading">
                             <span class="shimmer-white">ULTIMATE MUSIC BOT<br>FOR YOUR</span> <span class="grad">DISCORD SERVER</span>
                         </h1>
                     </div>
@@ -84,35 +128,35 @@
                     The ultimate Discord Music OS. Combining high-fidelity music streaming, interactive UI panels, real-time audio filters, and seamless playback for your community.
                 </p>
                 <div class="hero-btns fade-up" style="animation-delay:0.3s">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener" class="btn btn-primary">
-                        <i class="fab fa-discord"></i> Add to Discord
+                    <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Add to Discord: invite BOBO to your server">
+                        <svg class="fa-svg fa-discord" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg> Add to Discord
                     </a>
                 </div>
                 <!-- Live stat chips -->
                 <div class="hero-chips fade-up" style="animation-delay:0.4s">
                     <div class="chip">
-                        <i class="fas fa-server"></i>
+                        <svg class="fa-svg fa-server" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
                         <div>
                             <div class="chip-val" id="hero-servers">--</div>
                             <div class="chip-label">Servers</div>
                         </div>
                     </div>
                     <div class="chip">
-                        <i class="fas fa-users"></i>
+                        <svg class="fa-svg fa-users" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
                         <div>
                             <div class="chip-val" id="hero-members">--</div>
                             <div class="chip-label">Members</div>
                         </div>
                     </div>
                     <div class="chip">
-                        <i class="fas fa-bolt"></i>
+                        <svg class="fa-svg fa-bolt" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z"/></svg>
                         <div>
                             <div class="chip-val" id="hero-uptime">--</div>
                             <div class="chip-label">Uptime</div>
                         </div>
                     </div>
                     <div class="chip">
-                        <i class="fas fa-signal"></i>
+                        <svg class="fa-svg fa-signal" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M576 0c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM448 96c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM352 224V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32s32 14.3 32 32zM192 288c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32zM96 416v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V416c0-17.7 14.3-32 32-32s32 14.3 32 32z"/></svg>
                         <div>
                             <div class="chip-val" id="hero-ping">--</div>
                             <div class="chip-label">Ping</div>
@@ -138,22 +182,22 @@
             <!-- Highlight cards -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 16px; margin-bottom: 40px;">
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-clock" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg></div>
                     <h3 class="feat-card-title">99.9% Uptime</h3>
                     <p>Reliable service you can count on, day and night.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-shield-halved" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg></div>
                     <h3 class="feat-card-title">Secure & Safe</h3>
                     <p>Full Discord OAuth2 integration and advanced data protection.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-music"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-music" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg></div>
                     <h3 class="feat-card-title">High-Fidelity Audio</h3>
                     <p>Crystal clear 24/7 music streaming with advanced filters.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-tachometer-alt" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM256 416c35.3 0 64-28.7 64-64c0-17.4-6.9-33.1-18.1-44.6L366 161.7c5.3-12.1-.2-26.3-12.3-31.6s-26.3 .2-31.6 12.3L257.9 288c-.6 0-1.3 0-1.9 0c-35.3 0-64 28.7-64 64s28.7 64 64 64zM176 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM96 288a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm352-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg></div>
                     <h3 class="feat-card-title">Fast Response</h3>
                     <p>Commands execute within milliseconds across all servers.</p>
                 </div>
@@ -162,25 +206,25 @@
             <!-- Big stat boxes -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 16px;">
                 <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <i class="fas fa-server" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;"></i>
-                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px;" id="about-servers">100+</div>
+                    <svg class="fa-svg fa-server" viewBox="0 0 512 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
+                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;" id="about-servers">100+</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Active Servers</div>
                 </div>
                 <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <i class="fas fa-terminal" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;"></i>
-                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px;">15+</div>
+                    <svg class="fa-svg fa-terminal" viewBox="0 0 576 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.4 86.6C-3.1 74.1-3.1 53.9 9.4 41.4s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 9.4 86.6zM256 416H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;">15+</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Commands</div>
                 </div>
                 <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <i class="fas fa-users" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;"></i>
-                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px;" id="about-users">100+</div>
+                    <svg class="fa-svg fa-users" viewBox="0 0 640 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
+                    <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;" id="about-users">100+</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Users</div>
                 </div>
                 <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <div class="ping-bars">
+                    <div class="ping-bars" aria-hidden="true">
                         <span></span><span></span><span></span><span></span>
                     </div>
-                    <div id="about-ping" style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px;">2ms</div>
+                    <div id="about-ping" style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;">2ms</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Avg. Ping</div>
                 </div>
             </div>
@@ -193,17 +237,17 @@
             <div style="display: flex; justify-content: center; margin-bottom: 40px;">
                 <div class="hero-pill reveal">
                     <div class="pill-avatar-wrapper">
-                        <img src="images/bobobo.png" alt="Bobo" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'">
-                        <div class="pill-status">
-                            <div class="pill-status-pulse"></div>
+                        <picture><source srcset="images/bobobo-64.webp" type="image/webp"><img src="images/bobobo.png" alt="" width="44" height="44" loading="lazy" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                        <div class="pill-status" aria-hidden="true">
+                            <div class="pill-status-pulse" aria-hidden="true"></div>
                         </div>
                     </div>
                     <div class="pill-info">
                         <div class="pill-name">
-                            BOBO <span class="pill-bot-tag"><i class="fas fa-check"></i> BOT</span>
+                            BOBO <span class="pill-bot-tag"><svg class="fa-svg fa-check" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> BOT</span>
                         </div>
                         <div class="pill-activity" style="display: flex; align-items: center;">
-                            <div class="audio-bars" style="margin-right: 6px;">
+                            <div class="audio-bars" aria-hidden="true" style="margin-right: 6px;">
                                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
                             </div>
                             <span class="dp-dynamic-text" style="transition: opacity 0.3s ease;">100+ SERVERS</span>
@@ -242,19 +286,19 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <!-- YouTube -->
                 <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
-                    <i class="fab fa-youtube" style="font-size: 3.5rem; color: #ff0000; margin-bottom: 20px; display: block;"></i>
+                    <svg class="fa-svg fa-youtube" viewBox="0 0 576 512" style="font-size: 3.5rem; color: #ff0000; margin-bottom: 20px; display: block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
                     <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">YouTube</h3>
                     <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Universal access to the world's largest catalog of high-fidelity tracks and live streams.</p>
                 </div>
                 <!-- SoundCloud -->
                 <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
-                    <i class="fab fa-soundcloud" style="font-size: 3.5rem; color: #ff5500; margin-bottom: 20px; display: block;"></i>
+                    <svg class="fa-svg fa-soundcloud" viewBox="0 0 640 512" style="font-size: 3.5rem; color: #ff5500; margin-bottom: 20px; display: block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M111.4 256.3l5.8 65-5.8 68.3c-.3 2.5-2.2 4.4-4.4 4.4s-4.2-1.9-4.2-4.4l-5.6-68.3 5.6-65c0-2.2 1.9-4.2 4.2-4.2 2.2 0 4.1 2 4.4 4.2zm21.4-45.6c-2.8 0-4.7 2.2-5 5l-5 105.6 5 68.3c.3 2.8 2.2 5 5 5 2.5 0 4.7-2.2 4.7-5l5.8-68.3-5.8-105.6c0-2.8-2.2-5-4.7-5zm25.5-24.1c-3.1 0-5.3 2.2-5.6 5.3l-4.4 130 4.4 67.8c.3 3.1 2.5 5.3 5.6 5.3 2.8 0 5.3-2.2 5.3-5.3l5.3-67.8-5.3-130c0-3.1-2.5-5.3-5.3-5.3zM7.2 283.2c-1.4 0-2.2 1.1-2.5 2.5L0 321.3l4.7 35c.3 1.4 1.1 2.5 2.5 2.5s2.2-1.1 2.5-2.5l5.6-35-5.6-35.6c-.3-1.4-1.1-2.5-2.5-2.5zm23.6-21.9c-1.4 0-2.5 1.1-2.5 2.5l-6.4 57.5 6.4 56.1c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.8-2.5l7.2-56.4-7.2-57.5c-.3-1.4-1.4-2.5-2.8-2.5zm25.3-11.4c-1.7 0-3.1 1.4-3.3 3.3L47 321.3l5.8 65.8c.3 1.7 1.7 3.1 3.3 3.1 1.7 0 3.1-1.4 3.1-3.1l6.9-65.8-6.9-68.1c0-1.9-1.4-3.3-3.1-3.3zm25.3-2.2c-1.9 0-3.6 1.4-3.6 3.6l-5.8 70 5.8 67.8c0 2.2 1.7 3.6 3.6 3.6s3.6-1.4 3.9-3.6l6.4-67.8-6.4-70c-.3-2.2-2-3.6-3.9-3.6zm241.4-110.9c-1.1-.8-2.8-1.4-4.2-1.4-2.2 0-4.2.8-5.6 1.9-1.9 1.7-3.1 4.2-3.3 6.7v.8l-3.3 176.7 1.7 32.5 1.7 31.7c.3 4.7 4.2 8.6 8.9 8.6s8.6-3.9 8.6-8.6l3.9-64.2-3.9-177.5c-.4-3-2-5.8-4.5-7.2zm-26.7 15.3c-1.4-.8-2.8-1.4-4.4-1.4s-3.1.6-4.4 1.4c-2.2 1.4-3.6 3.9-3.6 6.7l-.3 1.7-2.8 160.8s0 .3 3.1 65.6v.3c0 1.7.6 3.3 1.7 4.7 1.7 1.9 3.9 3.1 6.4 3.1 2.2 0 4.2-1.1 5.6-2.5 1.7-1.4 2.5-3.3 2.5-5.6l.3-6.7 3.1-58.6-3.3-162.8c-.3-2.8-1.7-5.3-3.9-6.7zm-111.4 22.5c-3.1 0-5.8 2.8-5.8 6.1l-4.4 140.6 4.4 67.2c.3 3.3 2.8 5.8 5.8 5.8 3.3 0 5.8-2.5 6.1-5.8l5-67.2-5-140.6c-.2-3.3-2.7-6.1-6.1-6.1zm376.7 62.8c-10.8 0-21.1 2.2-30.6 6.1-6.4-70.8-65.8-126.4-138.3-126.4-17.8 0-35 3.3-50.3 9.4-6.1 2.2-7.8 4.4-7.8 9.2v249.7c0 5 3.9 8.6 8.6 9.2h218.3c43.3 0 78.6-35 78.6-78.3.1-43.6-35.2-78.9-78.5-78.9zm-296.7-60.3c-4.2 0-7.5 3.3-7.8 7.8l-3.3 136.7 3.3 65.6c.3 4.2 3.6 7.5 7.8 7.5 4.2 0 7.5-3.3 7.5-7.5l3.9-65.6-3.9-136.7c-.3-4.5-3.3-7.8-7.5-7.8zm-53.6-7.8c-3.3 0-6.4 3.1-6.4 6.7l-3.9 145.3 3.9 66.9c.3 3.6 3.1 6.4 6.4 6.4 3.6 0 6.4-2.8 6.7-6.4l4.4-66.9-4.4-145.3c-.3-3.6-3.1-6.7-6.7-6.7zm26.7 3.4c-3.9 0-6.9 3.1-6.9 6.9L227 321.3l3.9 66.4c.3 3.9 3.1 6.9 6.9 6.9s6.9-3.1 6.9-6.9l4.2-66.4-4.2-141.7c0-3.9-3-6.9-6.9-6.9z"/></svg>
                     <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">SoundCloud</h3>
                     <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Stream exclusive remixes, podcasts, and independent artists effortlessly.</p>
                 </div>
                 <!-- Spotify -->
                 <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
-                    <i class="fab fa-spotify" style="font-size: 3.5rem; color: #1DB954; margin-bottom: 20px; display: block;"></i>
+                    <svg class="fa-svg fa-spotify" viewBox="0 0 496 512" style="font-size: 3.5rem; color: #1DB954; margin-bottom: 20px; display: block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg>
                     <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">Spotify</h3>
                     <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Flawless integration with your curated Spotify playlists, albums, and top artists.</p>
                 </div>
@@ -276,32 +320,32 @@
             </div>
             <div class="feat-grid">
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-music"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-music" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg></div>
                     <h3>Advanced Music System</h3>
                     <p>Crystal clear audio, custom playlists, interactive UI panels, queue jumping, and DJ roles to control the party.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-sliders"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-sliders" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg></div>
                     <h3>Audio Filters & Radio</h3>
                     <p>Apply real-time filters like Bassboost, Nightcore, 8D, and Lofi. Listen to live FM radios seamlessly without losing your current queue.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-robot"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-robot" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg></div>
                     <h3>Autoplay & 24/7 Mode</h3>
                     <p>Never let the music stop! Bot automatically picks related songs or stays in your voice channel 24/7.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-star"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-star" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg></div>
                     <h3>User Entrance Themes</h3>
                     <p>Set your personal WWE-style entrance music that plays automatically for 10 seconds when you join a voice channel.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-list-check"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-list-check" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg></div>
                     <h3>Interactive UI Panels</h3>
                     <p>Control everything via buttons and dropdowns! Skip, pause, apply filters, and jump to specific songs in the queue without typing a single command.</p>
                 </div>
                 <div class="feat-card reveal">
-                    <div class="feat-icon"><i class="fas fa-headphones"></i></div>
+                    <div class="feat-icon" aria-hidden="true"><svg class="fa-svg fa-headphones" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80V384 336 288C0 146.6 114.6 32 256 32s256 114.6 256 256v48 48 16c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48V304c0-26.5 21.5-48 48-48c10.8 0 21 2.1 30.4 6C449.6 159.4 362.1 80 256 80z"/></svg></div>
                     <h3>Personal Playlists</h3>
                     <p>Create, save, and load your own personal playlists directly in Discord. Carry your favorite songs across any server Bobo is in!</p>
                 </div>
@@ -323,7 +367,7 @@
 
             <div class="cmd-category reveal">
                 <div class="cmd-cat-header">
-                    <div class="cmd-cat-icon"><i class="fas fa-music"></i></div>
+                    <div class="cmd-cat-icon" aria-hidden="true"><svg class="fa-svg fa-music" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 20.2-1.1 28.3 5z"/></svg></div>
                     <div>
                         <h3 class="cmd-cat-title">Music Commands</h3>
                         <p class="cmd-cat-sub">High fidelity music streaming</p>
@@ -372,20 +416,21 @@
     </section>
 
     <!-- ── CTA ─────────────────────── -->
-    <section class="cta-section" id="home-cta">
+    <section class="cta-section" id="home-cta" aria-labelledby="cta-title">
         <div class="container">
             <div class="cta-box reveal">
-                <div class="cta-glow"></div>
+                <div class="cta-glow" aria-hidden="true"></div>
                 <div class="cta-inner">
-                    <h2 class="cta-title">Ready to elevate your music experience?</h2>
+                    <h2 class="cta-title" id="cta-title">Ready to elevate your music experience?</h2>
                     <p class="cta-sub">Join thousands of servers already using BOBO to listen to high-fidelity audio and interactive music streams.</p>
                     <div class="cta-btns">
-                        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-discord"></i> Add to Discord</a>
+                        <a href="https://discord.com/oauth2/authorize?client_id=1487579840046563351&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Add to Discord: invite BOBO to your server"><svg class="fa-svg fa-discord" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg> Add to Discord</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- ── FOOTER ─────────────────────── -->
     <footer class="footer">
@@ -393,67 +438,67 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand-logo">
-                        <img src="images/bobobo.png" alt="Bobo" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'">
+                        <picture><source srcset="images/bobobo-64.webp" type="image/webp"><img src="images/bobobo.png" alt="" width="28" height="28" loading="lazy" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
                         <span>BOBO</span>
                     </div>
                     <p class="footer-brand-desc">The ultimate Discord music bot combining high fidelity audio, interactive controls, and 24/7 seamless playback.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Product</h4>
+                    <h2 class="footer-heading">Product</h2>
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#commands">Commands</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Resources</h4>
+                    <h2 class="footer-heading">Resources</h2>
                     <ul>
                         <li><a href="#">Support Server</a></li>
                         <li><a href="#">Documentation</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Legal</h4>
+                    <h2 class="footer-heading">Legal</h2>
                     <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="tos.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-copy">&copy; 2026 Bobo Bot. All rights reserved.</div>
                 <div class="footer-socials">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="BOBO on X (Twitter)"><svg class="fa-svg fa-twitter" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a>
+                    <a href="#" aria-label="BOBO on GitHub"><svg class="fa-svg fa-github" viewBox="0 0 496 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+                    <a href="#" aria-label="BOBO Discord server"><svg class="fa-svg fa-discord" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- 24/7 Lofi Player -->
-    <div id="lofi-player" class="lofi-player">
-        <audio id="lofi-audio" src="https://ec3.yesstreaming.net:3755/stream" preload="auto" autoplay muted crossorigin="anonymous"></audio>
-        
-        <img src="images/bobobo.png" alt="Bobo Logo" class="lofi-logo" id="lofi-logo">
-        
-        <div class="lofi-info">
+    <div id="lofi-player" class="lofi-player" role="region" aria-label="BOBO lofi radio player">
+        <audio id="lofi-audio" src="https://ec3.yesstreaming.net:3755/stream" preload="none" crossorigin="anonymous"></audio>
+
+        <picture><source srcset="images/bobobo-64.webp" type="image/webp"><img src="images/bobobo.png" alt="" width="36" height="36" loading="lazy" decoding="async" class="lofi-logo" id="lofi-logo"></picture>
+
+        <div class="lofi-info" aria-hidden="false">
             <div class="lofi-title">Playing BOBO</div>
             <div class="lofi-subtitle">Chill &amp; relax</div>
         </div>
-        
-        <div class="lofi-visualizer" id="lofi-visualizer">
+
+        <div class="lofi-visualizer" id="lofi-visualizer" aria-hidden="true">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
 
-        <button class="lofi-play-btn" id="lofi-play-btn" aria-label="Play Lofi Music">
-            <i class="fas fa-volume-mute"></i>
+        <button class="lofi-play-btn" id="lofi-play-btn" aria-label="Toggle lofi music playback" aria-pressed="false">
+            <svg class="fa-svg fa-play" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
