@@ -60,9 +60,9 @@
     .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:16px 32px;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
     .btn-primary{background:var(--p500);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 1px 2px rgba(0,0,0,.4)}
-    .hero-pill{display:inline-flex;align-items:center;gap:16px;background:var(--bg2);padding:8px 24px 8px 8px;border-radius:20px;border:1px solid var(--border);margin-bottom:32px}
-    .pill-avatar-wrapper{position:relative;display:flex;align-items:center;justify-content:center}
-    .pill-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;aspect-ratio:1/1}
+    .hero-pill{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);padding:8px 20px 8px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.10);margin-bottom:32px}
+    .pill-avatar-wrapper{position:relative;width:44px;height:44px;flex:0 0 auto}
+    .pill-avatar{width:100%;height:100%;border-radius:50%;border:1px solid rgba(255,255,255,.12);object-fit:cover;display:block}
     .hero-chips{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
     .chip{display:flex;align-items:center;gap:8px;padding:8px 24px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);font-size:.88rem;font-weight:600}
     .chip-val{font-size:1.1rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;min-width:3ch;min-height:1.4em;display:inline-block}
@@ -112,7 +112,7 @@
         <div class="container">
             <div class="hero-inner">
                 <!-- Next Level Hero Pill -->
-                <div class="hero-pill fade-up" style="animation-delay:0s">
+                <div class="hero-pill fade-up" role="group" aria-label="BOBO bot status" style="animation-delay:0s">
                     <div class="pill-avatar-wrapper">
                         <picture><source srcset="images/round-44.webp 1x, images/round-88.webp 2x" type="image/webp"><img src="images/bobo-round.png?v=2" alt="" width="44" height="44" fetchpriority="high" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
                         <div class="pill-status" aria-hidden="true">
@@ -124,11 +124,10 @@
                             BOBO
                             <span class="pill-bot-tag"><svg class="fa-svg fa-check" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> BOT</span>
                         </div>
-                        <div class="pill-activity">
-                            <div class="audio-bars" aria-hidden="true">
-                                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                            </div>
-                            <span class="activity-text">Playing <span>High Fidelity Music</span></span>
+                        <div class="pill-uptime">
+                            <svg class="fa-svg pill-uptime-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M349.4 44.6c5.9-13.7 1.5-29.7-10.6-38.5s-28.6-8-39.9 1.8l-256 224c-10 8.8-13.6 22.9-8.9 35.3S50.7 288 64 288H175.5L98.6 467.4c-5.9 13.7-1.5 29.7 10.6 38.5s28.6 8 39.9-1.8l256-224c10-8.8 13.6-22.9 8.9-35.3s-16.6-20.7-30-20.7H272.5L349.4 44.6z"/></svg>
+                            <span class="pill-uptime-label">Uptime</span>
+                            <span class="pill-uptime-val" id="hero-uptime-pill">Online</span>
                         </div>
                     </div>
                 </div>
