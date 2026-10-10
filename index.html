@@ -24,7 +24,7 @@
     <meta name="twitter:title" content="BOBO – High Fidelity Discord Music Bot">
     <meta name="twitter:description" content="Powerful AI, Smart Music, Automation, Analytics and Moderation — All in one Discord Bot.">
     <meta name="twitter:image" content="https://bobobot.duckdns.org/images/og-image.png?v=3">
-    <meta name="theme-color" content="#b91c1c">
+    <meta name="theme-color" content="#09090b">
 
     <!-- Icons: Font Awesome Free 6.4.0 (CC BY 4.0) by Fonticons, Inc. — inlined as SVG for performance -->
     <link rel="preload" as="image" href="images/round-88.webp" type="image/webp" fetchpriority="high">
@@ -39,32 +39,32 @@
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     section{scroll-margin-top:90px}
-    :root{--bg:#050304;--bg2:#0e0709;--bg3:#160b0e;--border:rgba(255,0,51,.15);--border2:rgba(255,0,51,.3);--p400:#ff3b57;--p500:#dc2626;--p600:#b91c1c;--p700:#7f1d1d;--muted:#a1999b;--sub:#b8b0b2;--text:#faf7f7;--t-white:var(--text);--t-muted:var(--muted);--p300:#ff8a95;--font:'Manrope','Manrope Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono','JetBrains Mono Fallback',ui-monospace,monospace}
-    body{font-family:var(--font);background-color:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    :root{--bg:#09090b;--bg2:#0f0f12;--bg3:#151519;--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);--p400:#ff3b4e;--p500:#dc2626;--p600:#b91c1c;--p700:#7f1d1d;--muted:#a1a1aa;--sub:#b4b4bb;--text:#fafafa;--t-white:var(--text);--t-muted:var(--muted);--p300:#ff8a95;--font:'Manrope','Manrope Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono','JetBrains Mono Fallback',ui-monospace,monospace}
+    body{font-family:var(--font);background-color:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}ul{list-style:none}
     .container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
-    .skip-link{position:absolute;left:16px;top:-48px;z-index:10001;background:#b91c1c;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;transition:top .2s ease}
+    .skip-link{position:absolute;left:16px;top:-48px;z-index:10001;background:#dc2626;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;transition:top .2s ease}
     .skip-link:focus{top:12px}
-    .nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:18px 0;background:rgba(5,3,4,.98);border-bottom:1px solid transparent}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:18px 0;background:rgba(9,9,11,.98);border-bottom:1px solid transparent}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
     .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
     .nav-logo img{width:32px;height:32px;border-radius:8px;aspect-ratio:1/1}
     .nav-links{display:flex;gap:32px}
     .nav-links a{color:var(--muted);font-size:.9rem;font-weight:500}
-    .nav-invite{padding:8px 18px;border-radius:9px;background:linear-gradient(135deg,var(--p600),var(--p500));color:#fff;font-size:.87rem;font-weight:600}
+    .nav-invite{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:10px;background:var(--p500);color:#fff;font-size:.87rem;font-weight:600}
     .hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
     .hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:center;justify-content:center;padding:80px 0 40px;overflow:hidden}
     .hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
-    .hero-heading{font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;margin-bottom:16px;max-width:820px}
-    .hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--sub);max-width:660px;line-height:1.65;margin-bottom:28px}
-    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
-    .btn-primary{background:linear-gradient(135deg,var(--p500) 0%,var(--p600) 100%);color:#fff;border:1px solid rgba(255,255,255,.1)}
-    .hero-pill{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(145deg,rgba(40,12,16,.7),rgba(18,8,10,.9));padding:6px 24px 6px 6px;border-radius:50px;border:1px solid rgba(255,0,51,.2);margin-bottom:30px}
+    .hero-heading{font-size:clamp(2.5rem,5vw,4.25rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;max-width:820px}
+    .hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--sub);max-width:62ch;line-height:1.65;margin-bottom:32px}
+    .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:16px 32px;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
+    .btn-primary{background:var(--p500);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+    .hero-pill{display:inline-flex;align-items:center;gap:16px;background:var(--bg2);padding:8px 24px 8px 8px;border-radius:20px;border:1px solid var(--border);margin-bottom:32px}
     .pill-avatar-wrapper{position:relative;display:flex;align-items:center;justify-content:center}
     .pill-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;aspect-ratio:1/1}
-    .hero-chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-    .chip{display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);font-size:.88rem;font-weight:600}
+    .hero-chips{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    .chip{display:flex;align-items:center;gap:8px;padding:8px 24px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);font-size:.88rem;font-weight:600}
     .chip-val{font-size:1.1rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;min-width:3ch;min-height:1.4em;display:inline-block}
     .fa-svg{height:1em;width:auto;flex-shrink:0;vertical-align:-.125em;overflow:visible}
     img{max-width:100%}
@@ -183,15 +183,15 @@
     </section>
 
     <!-- ── ABOUT SECTION ─────────────────────── -->
-    <section id="about" style="padding: 110px 0;">
+    <section id="about" style="padding: 96px 0;">
         <div class="container">
             <!-- Header -->
             <div class="sec-head reveal">
-                <div class="pill" style="justify-content:center; margin-bottom: 20px;">
+                <div class="pill" style="justify-content:center; margin-bottom: 24px;">
                     <span class="pill-dot"></span> About
                 </div>
                 <h2 class="sec-title">About <span class="grad">BOBO Bot</span></h2>
-                <p class="sec-sub" style="max-width: 800px; margin: 0 auto;">BOBO was created for Discord communities who demand the ultimate music experience. It delivers crystal-clear audio, seamless Spotify & YouTube integrations, and powerful interactive playback controls.</p>
+                <p class="sec-sub" style="max-width: 62ch; margin: 0 auto;">BOBO was created for Discord communities who demand the ultimate music experience. It delivers crystal-clear audio, seamless Spotify & YouTube integrations, and powerful interactive playback controls.</p>
             </div>
 
             <!-- Highlight cards -->
@@ -220,22 +220,22 @@
 
             <!-- Big stat boxes -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 16px;">
-                <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <svg class="fa-svg fa-server" viewBox="0 0 512 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
+                <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
+                    <svg class="fa-svg fa-server" viewBox="0 0 512 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 16px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm48 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM64 288c-35.3 0-64 28.7-64 64v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V352c0-35.3-28.7-64-64-64H64zm280 72a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm56 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
                     <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;" id="about-servers">100+</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Active Servers</div>
                 </div>
-                <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <svg class="fa-svg fa-terminal" viewBox="0 0 576 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.4 86.6C-3.1 74.1-3.1 53.9 9.4 41.4s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 9.4 86.6zM256 416H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
+                    <svg class="fa-svg fa-terminal" viewBox="0 0 576 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 16px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.4 86.6C-3.1 74.1-3.1 53.9 9.4 41.4s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 9.4 86.6zM256 416H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
                     <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;">9</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Commands</div>
                 </div>
-                <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
-                    <svg class="fa-svg fa-users" viewBox="0 0 640 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 18px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
+                <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
+                    <svg class="fa-svg fa-users" viewBox="0 0 640 512" style="font-size: 2rem; color: var(--p400); margin-bottom: 16px; display:block;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
                     <div style="font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 8px; min-height: 1.2em;" id="about-users">100+</div>
                     <div style="font-size: 0.82rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Users</div>
                 </div>
-                <div class="feat-card reveal" style="text-align: center; padding: 44px 24px;">
+                <div class="feat-card reveal" style="text-align: center; padding: 40px 24px;">
                     <div class="ping-bars" aria-hidden="true">
                         <span></span><span></span><span></span><span></span>
                     </div>
@@ -292,36 +292,36 @@
     </section>
 
     <!-- ── PLATFORMS ─────────────────────── -->
-    <section class="platforms-section" id="platforms" style="padding: 100px 0 20px;">
+    <section class="platforms-section" id="platforms" style="padding: 96px 0 20px;">
         <div class="container">
-            <div class="sec-head reveal" style="margin-bottom: 50px;">
+            <div class="sec-head reveal" style="margin-bottom: 48px;">
                 <h2 class="sec-title" style="font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700;">Stream your favorite tracks from the world's leading music platforms</h2>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
                 <!-- YouTube -->
                 <div class="feat-card reveal platform-card" style="text-align: center; padding: 40px 24px; display: flex; flex-direction: column; align-items: center;">
                     <div class="platform-icon">
                     <svg class="fa-svg fa-youtube" viewBox="0 0 576 512" style="font-size: 3.5rem; color: #ff0000; display: block; margin: 0 auto;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
                     </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">YouTube</h3>
-                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Universal access to the world's largest catalog of high-fidelity tracks and live streams.</p>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: #fff;">YouTube</h3>
+                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.65;">Universal access to the world's largest catalog of high-fidelity tracks and live streams.</p>
                 </div>
                 <!-- SoundCloud -->
                 <div class="feat-card reveal platform-card" style="text-align: center; padding: 40px 24px; display: flex; flex-direction: column; align-items: center;">
                     <div class="platform-icon">
                     <svg class="fa-svg fa-soundcloud" viewBox="0 0 640 512" style="font-size: 3.5rem; color: #ff5500; display: block; margin: 0 auto;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M111.4 256.3l5.8 65-5.8 68.3c-.3 2.5-2.2 4.4-4.4 4.4s-4.2-1.9-4.2-4.4l-5.6-68.3 5.6-65c0-2.2 1.9-4.2 4.2-4.2 2.2 0 4.1 2 4.4 4.2zm21.4-45.6c-2.8 0-4.7 2.2-5 5l-5 105.6 5 68.3c.3 2.8 2.2 5 5 5 2.5 0 4.7-2.2 4.7-5l5.8-68.3-5.8-105.6c0-2.8-2.2-5-4.7-5zm25.5-24.1c-3.1 0-5.3 2.2-5.6 5.3l-4.4 130 4.4 67.8c.3 3.1 2.5 5.3 5.6 5.3 2.8 0 5.3-2.2 5.3-5.3l5.3-67.8-5.3-130c0-3.1-2.5-5.3-5.3-5.3zM7.2 283.2c-1.4 0-2.2 1.1-2.5 2.5L0 321.3l4.7 35c.3 1.4 1.1 2.5 2.5 2.5s2.2-1.1 2.5-2.5l5.6-35-5.6-35.6c-.3-1.4-1.1-2.5-2.5-2.5zm23.6-21.9c-1.4 0-2.5 1.1-2.5 2.5l-6.4 57.5 6.4 56.1c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.8-2.5l7.2-56.4-7.2-57.5c-.3-1.4-1.4-2.5-2.8-2.5zm25.3-11.4c-1.7 0-3.1 1.4-3.3 3.3L47 321.3l5.8 65.8c.3 1.7 1.7 3.1 3.3 3.1 1.7 0 3.1-1.4 3.1-3.1l6.9-65.8-6.9-68.1c0-1.9-1.4-3.3-3.1-3.3zm25.3-2.2c-1.9 0-3.6 1.4-3.6 3.6l-5.8 70 5.8 67.8c0 2.2 1.7 3.6 3.6 3.6s3.6-1.4 3.9-3.6l6.4-67.8-6.4-70c-.3-2.2-2-3.6-3.9-3.6zm241.4-110.9c-1.1-.8-2.8-1.4-4.2-1.4-2.2 0-4.2.8-5.6 1.9-1.9 1.7-3.1 4.2-3.3 6.7v.8l-3.3 176.7 1.7 32.5 1.7 31.7c.3 4.7 4.2 8.6 8.9 8.6s8.6-3.9 8.6-8.6l3.9-64.2-3.9-177.5c-.4-3-2-5.8-4.5-7.2zm-26.7 15.3c-1.4-.8-2.8-1.4-4.4-1.4s-3.1.6-4.4 1.4c-2.2 1.4-3.6 3.9-3.6 6.7l-.3 1.7-2.8 160.8s0 .3 3.1 65.6v.3c0 1.7.6 3.3 1.7 4.7 1.7 1.9 3.9 3.1 6.4 3.1 2.2 0 4.2-1.1 5.6-2.5 1.7-1.4 2.5-3.3 2.5-5.6l.3-6.7 3.1-58.6-3.3-162.8c-.3-2.8-1.7-5.3-3.9-6.7zm-111.4 22.5c-3.1 0-5.8 2.8-5.8 6.1l-4.4 140.6 4.4 67.2c.3 3.3 2.8 5.8 5.8 5.8 3.3 0 5.8-2.5 6.1-5.8l5-67.2-5-140.6c-.2-3.3-2.7-6.1-6.1-6.1zm376.7 62.8c-10.8 0-21.1 2.2-30.6 6.1-6.4-70.8-65.8-126.4-138.3-126.4-17.8 0-35 3.3-50.3 9.4-6.1 2.2-7.8 4.4-7.8 9.2v249.7c0 5 3.9 8.6 8.6 9.2h218.3c43.3 0 78.6-35 78.6-78.3.1-43.6-35.2-78.9-78.5-78.9zm-296.7-60.3c-4.2 0-7.5 3.3-7.8 7.8l-3.3 136.7 3.3 65.6c.3 4.2 3.6 7.5 7.8 7.5 4.2 0 7.5-3.3 7.5-7.5l3.9-65.6-3.9-136.7c-.3-4.5-3.3-7.8-7.5-7.8zm-53.6-7.8c-3.3 0-6.4 3.1-6.4 6.7l-3.9 145.3 3.9 66.9c.3 3.6 3.1 6.4 6.4 6.4 3.6 0 6.4-2.8 6.7-6.4l4.4-66.9-4.4-145.3c-.3-3.6-3.1-6.7-6.7-6.7zm26.7 3.4c-3.9 0-6.9 3.1-6.9 6.9L227 321.3l3.9 66.4c.3 3.9 3.1 6.9 6.9 6.9s6.9-3.1 6.9-6.9l4.2-66.4-4.2-141.7c0-3.9-3-6.9-6.9-6.9z"/></svg>
                     </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">SoundCloud</h3>
-                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Stream exclusive remixes, podcasts, and independent artists effortlessly.</p>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: #fff;">SoundCloud</h3>
+                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.65;">Stream exclusive remixes, podcasts, and independent artists effortlessly.</p>
                 </div>
                 <!-- Spotify -->
                 <div class="feat-card reveal platform-card" style="text-align: center; padding: 40px 24px; display: flex; flex-direction: column; align-items: center;">
                     <div class="platform-icon">
                     <svg class="fa-svg fa-spotify" viewBox="0 0 496 512" style="font-size: 3.5rem; color: #1DB954; display: block; margin: 0 auto;" aria-hidden="true" focusable="false"><path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/></svg>
                     </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #fff;">Spotify</h3>
-                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.6;">Flawless integration with your curated Spotify playlists, albums, and top artists.</p>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: #fff;">Spotify</h3>
+                    <p style="color: var(--sub); font-size: 0.95rem; line-height: 1.65;">Flawless integration with your curated Spotify playlists, albums, and top artists.</p>
                 </div>
             </div>
         </div>
@@ -333,7 +333,7 @@
     <section class="features-section" id="features">
         <div class="container">
             <div class="sec-head reveal">
-                <div class="pill" style="justify-content:center; margin-bottom: 20px;">
+                <div class="pill" style="justify-content:center; margin-bottom: 24px;">
                     <span class="pill-dot"></span> Features
                 </div>
                 <h2 class="sec-title">Everything you need.<br><span class="grad">Nothing you don't.</span></h2>
@@ -380,7 +380,7 @@
     <section class="commands-section" id="commands">
         <div class="container">
             <div class="sec-head reveal">
-                <div class="pill" style="justify-content:center; margin-bottom: 20px;">
+                <div class="pill" style="justify-content:center; margin-bottom: 24px;">
                     <span class="pill-dot"></span> Commands
                 </div>
                 <h2 class="sec-title">Music <span class="grad">Commands</span></h2>
