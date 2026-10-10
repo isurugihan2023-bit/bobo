@@ -9,68 +9,70 @@
     <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin fetchpriority="high">
+    <meta name="description" content="Terms of Service for BOBO, the high-fidelity Discord music bot.">
+    <link rel="canonical" href="https://bobobot.duckdns.org/tos.html">
     <link rel="stylesheet" href="style.css">
     <style>
-        .legal-container {
-            max-width: 800px;
-            margin: 150px auto 100px;
-            padding: 40px;
-            background: rgba(15,15,18,0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .legal-title {
-            font-size: 2.5rem;
-            color: var(--t-white);
-            margin-bottom: 30px;
-        }
-        .legal-content h2 {
-            font-size: 1.5rem;
-            color: var(--t-white);
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .legal-content p, .legal-content li {
-            color: var(--t-muted);
-            line-height: 1.65;max-width:62ch;
-            margin-bottom: 15px;
-        }
-        .legal-content ul {
-            padding-left: 20px;
-        }
+    /* Shared legal-page system (.legal-page): single column, no card. Same block on tos.html + privacy.html. */
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('fonts/manrope-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Manrope Fallback';src:local('Arial'),local('Roboto'),local('Helvetica Neue');size-adjust:102.21%;ascent-override:106.6%;descent-override:30%;line-gap-override:0%}
+    @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'JetBrains Mono Fallback';src:local('Courier New'),local('Courier');size-adjust:100%;ascent-override:102%;descent-override:30%;line-gap-override:0%}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    main{flex:1;min-width:0;padding-top:72px}
+    .nav .nav-invite{white-space:nowrap}
+    .legal-page{max-width:780px;margin:0 auto;padding:64px 24px 96px}
+    .legal-badge{display:inline-flex;padding:6px 14px;border-radius:999px;border:1px solid rgba(255,59,78,.35);background:rgba(255,59,78,.08);color:var(--p400);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .legal-page h1{font-size:clamp(2.25rem,4.5vw,3.25rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:20px 0 16px;color:var(--text)}
+    .legal-page .legal-updated{color:var(--muted);font-size:1rem;margin:0 0 40px}
+    .legal-page h2{color:var(--p400);font-size:1.375rem;font-weight:700;margin:48px 0 12px;scroll-margin-top:96px}
+    .legal-page p{color:var(--sub);font-size:1.0625rem;line-height:1.75;margin:0 0 16px;max-width:70ch}
+    .legal-page ul{list-style:disc;padding-left:24px;margin:0 0 16px}
+    .legal-page ol{list-style:decimal;padding-left:24px;margin:0 0 16px}
+    .legal-page li{margin-bottom:8px;color:var(--sub);font-size:1.0625rem;line-height:1.75}
+    .legal-page li::marker{color:var(--muted)}
+    .legal-page code{font-family:var(--mono);font-size:.9em;padding:2px 8px;border-radius:6px;background:var(--bg3);border:1px solid rgba(255,255,255,.1);color:var(--text)}
+    .legal-page strong{color:var(--text);font-weight:700}
+    .legal-page a{color:var(--p400)}
+    .legal-page a:hover{text-decoration:underline}
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <picture><source srcset="images/square-32.webp 1x, images/square-64.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
-                <span>BOBO</span>
-                <span class="nav-logo-dot" aria-hidden="true"></span>
-            </a>
-            <div class="nav-cta">
-                <a href="index.html" class="nav-invite">Back to Home</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header" style="display:contents">
+    <nav class="nav" id="navbar" aria-label="Primary">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="nav-logo" aria-label="BOBO home">
+                    <picture><source srcset="images/square-32.webp 1x, images/square-64.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
+                    <span>BOBO</span>
+                    <span class="nav-logo-dot" aria-hidden="true"></span>
+                </a>
+                <div class="nav-cta">
+                    <a href="index.html" class="nav-invite">Back to Home</a>
+                </div>
             </div>
         </div>
     </nav>
+    </header>
 
-    <div class="legal-container">
-        <h1 class="legal-title">Terms of Service</h1>
-        <div class="legal-content">
-            <p>Last Updated: <strong>July 2026</strong></p>
+    <main id="main-content">
+    <div class="legal-page">
+        <span class="legal-badge">Terms</span>
+        <h1>Terms of Service</h1>
+        <p class="legal-updated">Last Updated: July 2026</p>
             
             <h2>1. Agreement to Terms</h2>
             <p>By inviting and using Bobo Bot ("the Bot") in your Discord server, you agree to these Terms of Service. If you do not agree to these terms, you must remove the Bot from your server.</p>
 
             <h2>2. Usage Restrictions</h2>
             <p>You agree not to:</p>
-            <ul>
+            <ol>
                 <li>Use the Bot for any illegal, malicious, or unauthorized purpose.</li>
                 <li>Attempt to exploit, hack, or disrupt the Bot's services or infrastructure.</li>
                 <li>Spam or abuse the Bot's commands.</li>
-            </ul>
+            </ol>
 
             <h2>3. Uptime and Availability</h2>
             <p>While we strive for 99.9% uptime, the Bot is provided "as is". We are not responsible for any downtime, data loss, or issues caused by the Bot in your server.</p>
@@ -80,8 +82,8 @@
 
             <h2>5. Changes to Terms</h2>
             <p>We may update these terms at any time. Continued use of the Bot implies acceptance of any new terms.</p>
-        </div>
     </div>
+    </main>
 
     <footer class="footer">
         <div class="container">
