@@ -506,5 +506,24 @@
     </div>
 
     <script src="script.js" defer></script>
+<script>
+window.addEventListener('load', function(){
+  function c(el){if(!el)return null;var r=el.getBoundingClientRect();return {cy:Math.round((r.top+r.bottom)/2*100)/100,top:Math.round(r.top*100)/100,bottom:Math.round(r.bottom*100)/100,left:Math.round(r.left*100)/100,right:Math.round(r.right*100)/100,w:Math.round(r.width*100)/100,h:Math.round(r.height*100)/100};}
+  var viz=document.getElementById('lofi-visualizer');
+  var o={viewport:{w:window.innerWidth,h:window.innerHeight},
+    player:c(document.getElementById('lofi-player')),
+    audio:c(document.getElementById('lofi-audio')),
+    picture:c(document.querySelector('#lofi-player picture')),
+    logo:c(document.getElementById('lofi-logo')),
+    info:c(document.querySelector('#lofi-player .lofi-info')),
+    title:c(document.querySelector('#lofi-player .lofi-title')),
+    subtitle:c(document.querySelector('#lofi-player .lofi-subtitle')),
+    viz:viz?c(viz):null,
+    btn:c(document.getElementById('lofi-play-btn')),
+    btnSvg:c(document.querySelector('#lofi-play-btn svg'))};
+  if(viz){o.vizBars=Array.prototype.map.call(viz.querySelectorAll('.bar'),function(b){return c(b);});}
+  var d=document.createElement('pre');d.id='lofi-metrics';d.textContent='LOFI-METRICS:'+JSON.stringify(o);document.body.appendChild(d);
+});
+</script>
 </body>
 </html>
