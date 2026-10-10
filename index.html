@@ -16,15 +16,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bobobot.duckdns.org/">
     <meta property="og:site_name" content="BOBO Bot">
-    <meta property="og:image" content="https://bobobot.duckdns.org/images/og-image.png">
+    <meta property="og:image" content="https://bobobot.duckdns.org/images/og-image.png?v=3">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="BOBO – High Fidelity Discord Music Bot">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BOBO – High Fidelity Discord Music Bot">
     <meta name="twitter:description" content="Powerful AI, Smart Music, Automation, Analytics and Moderation — All in one Discord Bot.">
-    <meta name="twitter:image" content="https://bobobot.duckdns.org/images/og-image.png">
-    <meta name="theme-color" content="#0284c7">
+    <meta name="twitter:image" content="https://bobobot.duckdns.org/images/og-image.png?v=3">
+    <meta name="theme-color" content="#b91c1c">
 
     <!-- Icons: Font Awesome Free 6.4.0 (CC BY 4.0) by Fonticons, Inc. — inlined as SVG for performance -->
     <link rel="preload" as="image" href="images/round-88.webp" type="image/webp" fetchpriority="high">
@@ -39,13 +39,13 @@
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     section{scroll-margin-top:90px}
-    :root{--bg:#080b12;--bg2:#0d111c;--bg3:#121826;--border:rgba(14,165,233,.15);--border2:rgba(14,165,233,.3);--p400:#38bdf8;--p500:#0ea5e9;--p600:#0284c7;--p700:#0369a1;--muted:#8595ad;--sub:#94a3b8;--text:#f8fafc;--t-white:#f8fafc;--t-muted:#8595ad;--p300:#7dd3fc;--font:'Manrope','Manrope Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono','JetBrains Mono Fallback',ui-monospace,monospace}
+    :root{--bg:#050304;--bg2:#0e0709;--bg3:#160b0e;--border:rgba(255,0,51,.15);--border2:rgba(255,0,51,.3);--p400:#ff3b57;--p500:#dc2626;--p600:#b91c1c;--p700:#7f1d1d;--muted:#a1999b;--sub:#b8b0b2;--text:#faf7f7;--t-white:var(--text);--t-muted:var(--muted);--p300:#ff8a95;--font:'Manrope','Manrope Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono','JetBrains Mono Fallback',ui-monospace,monospace}
     body{font-family:var(--font);background-color:var(--bg);color:var(--text);margin:0;padding:0;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}ul{list-style:none}
     .container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
-    .skip-link{position:absolute;left:16px;top:-48px;z-index:10001;background:#0284c7;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;transition:top .2s ease}
+    .skip-link{position:absolute;left:16px;top:-48px;z-index:10001;background:#b91c1c;color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:.9rem;transition:top .2s ease}
     .skip-link:focus{top:12px}
-    .nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:18px 0;background:rgba(8,11,18,.98);border-bottom:1px solid transparent}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:18px 0;background:rgba(5,3,4,.98);border-bottom:1px solid transparent}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
     .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
     .nav-logo img{width:32px;height:32px;border-radius:8px;aspect-ratio:1/1}
@@ -60,7 +60,7 @@
     .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px;border-radius:16px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
     .btn-primary{background:linear-gradient(135deg,var(--p500) 0%,var(--p600) 100%);color:#fff;border:1px solid rgba(255,255,255,.1)}
-    .hero-pill{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(145deg,rgba(30,41,59,.7),rgba(15,23,42,.9));padding:6px 24px 6px 6px;border-radius:50px;border:1px solid rgba(14,165,233,.2);margin-bottom:30px}
+    .hero-pill{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(145deg,rgba(40,12,16,.7),rgba(18,8,10,.9));padding:6px 24px 6px 6px;border-radius:50px;border:1px solid rgba(255,0,51,.2);margin-bottom:30px}
     .pill-avatar-wrapper{position:relative;display:flex;align-items:center;justify-content:center}
     .pill-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;aspect-ratio:1/1}
     .hero-chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
@@ -82,7 +82,7 @@
         <div class="container">
             <div class="nav-inner">
                 <a href="#home" class="nav-logo" aria-label="BOBO home">
-                    <picture><source srcset="images/square-32.webp 1x, images/square-64.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                    <picture><source srcset="images/square-32.webp 1x, images/square-64.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
                     <span>BOBO</span>
                     <span class="nav-logo-dot" aria-hidden="true"></span>
                 </a>
@@ -114,7 +114,7 @@
                 <!-- Next Level Hero Pill -->
                 <div class="hero-pill fade-up" style="animation-delay:0s">
                     <div class="pill-avatar-wrapper">
-                        <picture><source srcset="images/round-44.webp 1x, images/round-88.webp 2x" type="image/webp"><img src="images/bobo-round.png?v=2" alt="" width="44" height="44" fetchpriority="high" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                        <picture><source srcset="images/round-44.webp 1x, images/round-88.webp 2x" type="image/webp"><img src="images/bobo-round.png?v=2" alt="" width="44" height="44" fetchpriority="high" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
                         <div class="pill-status" aria-hidden="true">
                             <div class="pill-status-pulse" aria-hidden="true"></div>
                         </div>
@@ -252,7 +252,7 @@
             <div style="display: flex; justify-content: center; margin-bottom: 40px;">
                 <div class="hero-pill reveal">
                     <div class="pill-avatar-wrapper">
-                        <picture><source srcset="images/round-44.webp 1x, images/round-88.webp 2x" type="image/webp"><img src="images/bobo-round.png?v=2" alt="" width="44" height="44" loading="lazy" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                        <picture><source srcset="images/round-44.webp 1x, images/round-88.webp 2x" type="image/webp"><img src="images/bobo-round.png?v=2" alt="" width="44" height="44" loading="lazy" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
                         <div class="pill-status" aria-hidden="true">
                             <div class="pill-status-pulse" aria-hidden="true"></div>
                         </div>
@@ -460,7 +460,7 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand-logo">
-                        <picture><source srcset="images/square-28.webp 1x, images/square-56.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="28" height="28" loading="lazy" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                        <picture><source srcset="images/square-28.webp 1x, images/square-56.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="28" height="28" loading="lazy" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
                         <span>BOBO</span>
                     </div>
                     <p class="footer-brand-desc">The ultimate Discord music bot combining high fidelity audio, interactive controls, and 24/7 seamless playback.</p>
