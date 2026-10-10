@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Bobo Bot</title>
-    <link rel="icon" type="image/png" href="images/bobobo.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -42,8 +46,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <i class="fas fa-robot" style="color: var(--p400);"></i>
-                Bobo
+                <picture><source srcset="images/square-32.webp 1x, images/square-64.webp 2x" type="image/webp"><img src="images/bobo-square.png?v=2" alt="" width="32" height="32" fetchpriority="high" decoding="async" onerror="this.src='https://ui-avatars.com/api/?name=B&background=0284c7&color=fff'"></picture>
+                <span>BOBO</span>
+                <span class="nav-logo-dot" aria-hidden="true"></span>
             </a>
             <div class="nav-cta">
                 <a href="index.html" class="nav-invite">Back to Home</a>
@@ -76,6 +81,9 @@
 
             <h2>4. Data Deletion</h2>
             <p>If you remove Bobo Bot from your server, you can request the deletion of your server's data by contacting our support team or the Bot Developer directly.</p>
+
+            <h2>5. Message Handling</h2>
+            <p>The Bot reads messages in your server in order to respond to commands and operate its features. As part of its functionality, the Bot may automatically delete messages (for example, to keep channels tidy). Message content that is deleted is not stored.</p>
         </div>
     </div>
 
