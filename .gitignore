@@ -1,0 +1,13 @@
+_before/
+_after/
+__pycache__/
+.freebuff/
+node_modules/
+package.json
+package-lock.json
+_*.py
+_*.png
+*.py
+measure-tmp.html
+style[1].css
+script[1].js

@@ -27,7 +27,6 @@
     <meta name="theme-color" content="#09090b">
 
     <!-- Icons: Font Awesome Free 6.4.0 (CC BY 4.0) by Fonticons, Inc. — inlined as SVG for performance -->
-    <link rel="preload" as="image" href="images/round-96.webp?v=5" type="image/webp" fetchpriority="high">
     <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin fetchpriority="high">
 
     <style>
@@ -53,16 +52,13 @@
     .nav-links a{color:var(--muted);font-size:.9rem;font-weight:500}
     .nav-invite{display:inline-flex;align-items:center;min-height:44px;padding:8px 18px;border-radius:10px;background:var(--p500);color:#fff;font-size:.87rem;font-weight:600}
     .hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
-    .hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:center;justify-content:center;padding:80px 0 40px;overflow:hidden}
+    .hero{position:relative;min-height:560px;display:flex;align-items:flex-start;justify-content:center;padding:177px 0 40px;overflow:hidden}
     .hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center}
     .hero-heading{font-size:clamp(2.5rem,5vw,4.25rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;max-width:820px}
     .hero-sub{font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--sub);max-width:62ch;line-height:1.65;margin-bottom:32px}
     .hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:16px 32px;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent}
     .btn-primary{background:var(--p500);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 1px 2px rgba(0,0,0,.4)}
-    .hero-pill{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);padding:8px 20px 8px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.10);margin-bottom:32px}
-    .pill-avatar-wrapper{position:relative;width:44px;height:44px;flex:0 0 auto}
-    .pill-avatar{width:100%;height:100%;border-radius:50%;border:1px solid rgba(255,255,255,.12);object-fit:cover;display:block}
     .hero-chips{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
     .chip{display:flex;align-items:center;gap:8px;padding:8px 24px;border-radius:12px;background:var(--bg2);border:1px solid var(--border);font-size:.88rem;font-weight:600}
     .chip-val{font-size:1.1rem;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;min-width:3ch;min-height:1.4em;display:inline-block}
@@ -111,24 +107,6 @@
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="container">
             <div class="hero-inner">
-                <!-- Next Level Hero Pill -->
-                <div class="hero-pill fade-up" role="group" aria-label="BOBO bot status" style="animation-delay:0s">
-                    <div class="pill-avatar-wrapper">
-                        <picture><source srcset="images/round-48.webp?v=5 1x, images/round-96.webp?v=5 2x" type="image/webp"><img src="images/hero-round.png?v=5" alt="" width="48" height="48" fetchpriority="high" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
-                        <div class="pill-status" aria-hidden="true">
-                            <div class="pill-status-pulse" aria-hidden="true"></div>
-                        </div>
-                    </div>
-                    <div class="pill-info">
-                        <div class="pill-name">
-                            BOBO
-                            <span class="pill-bot-tag">BOT</span>
-                        </div>
-                        <div class="pill-uptime">
-                            <span class="pill-uptime-val">Online</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="fade-up" style="animation-delay:0.1s">
                     <div class="hero-float">
                         <h1 class="hero-heading" id="hero-heading">
@@ -246,27 +224,6 @@
     <!-- ── STATS STRIP ─────────────────────── -->
     <section class="stats-strip" id="stats">
         <div class="container">
-            <div style="display: flex; justify-content: center; margin-bottom: 40px;">
-                <div class="hero-pill reveal">
-                    <div class="pill-avatar-wrapper">
-                        <picture><source srcset="images/round-44.webp?v=4 1x, images/round-88.webp?v=4 2x" type="image/webp"><img src="images/bobo-round.png?v=4" alt="" width="44" height="44" loading="lazy" decoding="async" class="pill-avatar" onerror="this.src='https://ui-avatars.com/api/?name=B&background=b91c1c&color=fff'"></picture>
-                        <div class="pill-status" aria-hidden="true">
-                            <div class="pill-status-pulse" aria-hidden="true"></div>
-                        </div>
-                    </div>
-                    <div class="pill-info">
-                        <div class="pill-name">
-                            BOBO <span class="pill-bot-tag"><svg class="fa-svg fa-check" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> BOT</span>
-                        </div>
-                        <div class="pill-activity">
-                            <div class="audio-bars" aria-hidden="true">
-                                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                            </div>
-                            <span class="dp-dynamic-text" style="transition: opacity 0.3s ease;">100+ SERVERS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="stats-strip-inner">
                 <div class="stat-item">
                     <div class="stat-num stat-number" id="server-count-stat" data-target="100" data-suffix="+">100+</div>
