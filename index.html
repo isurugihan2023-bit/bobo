@@ -90,23 +90,44 @@
                 </div>
                 <div class="hero-visual">
                     <div class="player-mock" role="region" aria-label="BOBO radio player">
-                        <span class="hero-chip"><i aria-hidden="true"></i>Online &middot; 24/7 playback</span>
+                        <div class="pm-online-badge"><i aria-hidden="true"></i>Online · 24/7 playback</div>
                         <div class="pm-head">
-                            <span class="pm-avatar" aria-hidden="true"><img src="images/bobo-round.png" alt="" width="54" height="54" decoding="async"></span>
-                            <span class="pm-meta"><span class="pm-app">BOBO</span><span class="pm-now" id="hero-state">Paused</span></span>
-                            <span class="pm-live">LIVE</span>
+                            <span class="pm-avatar" aria-hidden="true">
+                                <img src="images/bobo-round.png" alt="" width="48" height="48" decoding="async">
+                            </span>
+                            <span class="pm-meta">
+                                <span class="pm-app">BOBO</span>
+                                <span class="pm-now" id="hero-state">Now playing</span>
+                            </span>
+                            <span class="pm-live"><span class="pm-live-dots">• •</span>LIVE</span>
                         </div>
                         <div class="pm-titlerow">
-                            <div class="pm-titles"><div class="pm-title">Chill &amp; relax</div><div class="pm-sub">Lo-fi radio &middot; 24/7</div></div>
-                            <div class="pm-time"><b id="hero-time">0:00</b><span>listening</span></div>
+                            <div class="pm-titles">
+                                <div class="pm-title">Chill &amp; relax</div>
+                                <div class="pm-sub">Lo-fi radio · 24/7</div>
+                            </div>
+                            <div class="pm-time">
+                                <b id="hero-time">0:00</b>
+                                <span>listening</span>
+                            </div>
                         </div>
                         <div class="pm-viz" id="hero-viz" aria-hidden="true"></div>
                         <div class="pm-controls">
-                            <button type="button" id="hero-toggle" class="pm-btn pm-btn-main" aria-label="Play radio" aria-pressed="false"><svg viewBox="0 0 384 512" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></button>
+                            <button type="button" id="hero-toggle" class="pm-btn pm-btn-main" aria-label="Pause radio" aria-pressed="true">
+                                <svg viewBox="0 0 320 512" width="16" height="16" aria-hidden="true" focusable="false">
+                                    <path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/>
+                                </svg>
+                            </button>
                             <div class="pm-vol">
-                                <button type="button" id="hero-mute" class="pm-btn" aria-label="Mute" aria-pressed="false"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12"/></svg></button>
-                                <input type="range" id="hero-volume" class="pm-volume" min="0" max="100" step="1" value="100" style="--vol:100%" aria-label="Volume">
-                                <output id="hero-vol-out" class="pm-vol-out" for="hero-volume">100%</output>
+                                <button type="button" id="hero-mute" class="pm-btn pm-btn-volume" aria-label="Mute" aria-pressed="false">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                                        <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3z"/>
+                                        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12"/>
+                                    </svg>
+                                </button>
+                                <div class="pm-volume-track">
+                                    <input type="range" id="hero-volume" class="pm-volume" min="0" max="100" step="1" value="100" style="--vol:100%" aria-label="Volume">
+                                </div>
                             </div>
                         </div>
                         <button type="button" id="hero-retry" class="pm-retry" hidden>Retry</button>
