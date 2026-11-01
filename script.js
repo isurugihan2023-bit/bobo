@@ -95,7 +95,15 @@
   paintMute();
   if(!optOut){
     if(document.hidden)armGesture();
-    else play();
+    else{
+      /* wait for the BOBO intro to finish so audio start-up doesn't compete with the intro animation */
+      var introEl=document.getElementById("intro"),fired=false;
+      var go=function(){if(fired)return;fired=true;if(!started&&!optOut&&audio.paused)play();};
+      if(introEl){
+        introEl.addEventListener("animationend",function(e){if(e.animationName==="introOut")setTimeout(go,50);});
+        setTimeout(go,1800);
+      }else play();
+    }
   }
 })}();
 /* Phase B (b): copy-to-clipboard for command rows. Buttons carry data-copy; #copy-status announces via aria-live. */
@@ -143,7 +151,7 @@
     var ticking=false;
     function update(){
       ticking=false;
-      var probe=Math.max(120,window.innerHeight*0.3);
+      var probe=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav"))||68)+48;
       var cur=null;
       items.forEach(function(it){
         var r=it.el.getBoundingClientRect();
