@@ -755,3 +755,22 @@ html[data-theme="light"] .hero:has(#hero-toggle[aria-pressed="true"]) .player-mo
   .hero-from{align-self:stretch;width:100%;justify-content:center;text-align:center}
   .hero-from span{width:100%;text-align:center}
 }
+
+/* ===== Platforms row: staggered entrance + subtle hover (mobile & desktop) ===== */
+.js .platform-row.reveal{opacity:1;transform:none;transition:none}
+.js .platform-item{opacity:0}
+.js .platform-row.visible .platform-item{opacity:1;animation:platIn .7s cubic-bezier(.16,.84,.3,1) backwards}
+.js .platform-row.visible .platform-item:nth-child(2){animation-delay:.1s}
+.js .platform-row.visible .platform-item:nth-child(3){animation-delay:.2s}
+@keyframes platIn{from{opacity:0;transform:translate3d(0,18px,0) scale(.96)}to{opacity:1;transform:none}}
+.platform-item{transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .2s,background .2s}
+.platform-item .fa-svg{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover) and (pointer:fine){
+  .platform-item:hover{transform:translateY(-3px);border-color:var(--line2);background:var(--card)}
+  .platform-item:hover .fa-svg{transform:scale(1.12)}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .platform-item{opacity:1}
+  .js .platform-row.visible .platform-item{animation:none}
+  .platform-item,.platform-item .fa-svg{transition:none}
+}
