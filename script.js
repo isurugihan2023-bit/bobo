@@ -20,7 +20,7 @@
   function read(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
   var optOut=read(OPT_KEY)==="1";
   var vol=parseInt(read(VOL_KEY),10);
-  if(!(vol>=0&&vol<=100))vol=100;
+  if(!(vol>=0&&vol<=100))vol=40;
   var started=false, gestureArmed=false;
   audio.preload="none";
   audio.volume=vol/100;
@@ -229,7 +229,7 @@
 })();
 
 
-/* Player v2: "Aura" ring visualizer (simulated: the stream is cross-origin, so real audio analysis is not possible), listening timer, volume readout, lock-screen controls. */
+/* Player v2: line visualizer (simulated: the stream is cross-origin, so real audio analysis is not possible), listening timer, volume readout, lock-screen controls. */
 (function(){
   function init(){
     var audio=document.getElementById("lofi-audio"),viz=document.getElementById("hero-viz");
@@ -237,41 +237,41 @@
     var timeEl=document.getElementById("hero-time"),vol=document.getElementById("hero-volume"),out=document.getElementById("hero-vol-out"),tog=document.getElementById("hero-toggle");
     var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    var H=44,GAP=7,dpr=Math.min(window.devicePixelRatio||1,2),cvs=document.createElement("canvas"),ctx=cvs.getContext("2d"),W=300;
+    var cvs=document.createElement("canvas"),ctx=cvs.getContext("2d");
     if(!ctx)return;
     viz.insertBefore(cvs,viz.firstChild);
-    function size(){W=Math.max(120,viz.clientWidth||300);cvs.width=Math.round(W*dpr);cvs.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);start();}
+    var W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2),GAP=7,BW=2;
     var level=0,playing=false,running=false,visible=true;
+    function size(){
+      var w=viz.clientWidth,h=viz.clientHeight;
+      if(!w||!h)return;
+      W=w;H=h;cvs.width=Math.round(w*dpr);cvs.height=Math.round(h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    size();
     function isLight(){return document.documentElement.getAttribute("data-theme")==="light";}
     function frame(now){
       running=false;
-      var t=now/1000,light=isLight();
-      var target=playing?(reduce?.6:.62+.25*Math.sin(t*.7)+.13*Math.sin(t*1.9)):0;
+      if(!W)size();
+      var t=now/1000;
+      var target=playing?(reduce?.55:.7+.2*Math.sin(t*.8)):0;
       var d=target-level;
-      if(Math.abs(d)>.003)level+=d*(playing?.08:.07);else level=target;
+      if(Math.abs(d)>.003)level+=d*(playing?.08:.06);else level=target;
       ctx.clearRect(0,0,W,H);
-      var n=Math.max(8,Math.floor((W-4)/GAP)),off=(W-(n-1)*GAP)/2,cy=H/2,i,x,env,a,hh;
-      var dot=light?"rgba(0,0,0,.22)":"rgba(255,255,255,.24)",red=light?"#c8102e":"#ff3b4e";
-      for(i=0;i<n;i++){
-        x=off+i*GAP;
-        env=Math.pow(Math.sin(Math.PI*(i+.5)/n),.7);
-        a=level*env*(.25+.75*(.5+.5*Math.sin(i*.55+t*2.4))*(.6+.4*Math.sin(i*.19-t*1.4)));
-        hh=a*(cy-3);
-        if(hh<1.3){
-          ctx.fillStyle=dot;ctx.beginPath();ctx.arc(x,cy,1.15,0,6.2832);ctx.fill();
-        }else{
-          ctx.fillStyle=red;ctx.globalAlpha=.55+.45*level;
-          ctx.beginPath();
-          if(ctx.roundRect)ctx.roundRect(x-1,cy-hh,2,hh*2,1);else ctx.rect(x-1,cy-hh,2,hh*2);
-          ctx.fill();ctx.globalAlpha=1;
-        }
+      var n=Math.max(2,Math.floor(W/GAP)),x0=(W-(n-1)*GAP)/2,light=isLight();
+      var rgb=light?"200,16,46":"255,59,78";
+      ctx.fillStyle="rgba("+rgb+","+(.4+.6*level).toFixed(3)+")";
+      for(var i=0;i<n;i++){
+        var e1=.5+.5*Math.sin(i*.37+t*2.3),e2=.5+.5*Math.sin(i*.11-t*1.4+1.7);
+        var h=Math.max(BW,(.18+.82*e1*e2)*level*H);
+        ctx.fillRect(Math.round(x0+i*GAP-BW/2),(H-h)/2,BW,h);
       }
       var moving=Math.abs(target-level)>.003;
       if((playing&&!reduce||moving)&&visible&&!document.hidden){running=true;requestAnimationFrame(frame);}
     }
     function start(){if(!running){running=true;requestAnimationFrame(frame);}}
-    size();
-    if("ResizeObserver" in window)new ResizeObserver(size).observe(viz);else window.addEventListener("resize",size);
+    start();
+    if("ResizeObserver" in window){new ResizeObserver(function(){size();start();}).observe(viz);}else{window.addEventListener("resize",function(){size();start();});}
     if("IntersectionObserver" in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible)start();},{threshold:0}).observe(viz);}
     document.addEventListener("visibilitychange",function(){if(!document.hidden)start();});
     if("MutationObserver" in window)new MutationObserver(start).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
