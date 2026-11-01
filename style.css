@@ -656,3 +656,38 @@ html[data-theme="light"] .pm-vol .pm-btn{background:transparent;color:var(--mute
 html[data-theme="light"] .pm-vol .pm-btn:hover{background:rgba(0,0,0,.07);color:var(--text)}
 html[data-theme="light"] .pm-status{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.25);color:#3f3f46}
 .pm-btn-main,html[data-theme="light"] .pm-btn-main{color:#fff}
+
+
+/* ===== Player: exact match to reference photo ===== */
+.hero .player-mock,.hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{position:relative;padding:24px;border-radius:20px;background:linear-gradient(180deg,#17171b,#111115);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 70px -36px #000}
+.hero .player-mock .hero-chip{top:-18px;left:-10px;padding:8px 14px;background:#17171c;border:1px solid rgba(255,255,255,.15);font-size:.78rem;font-weight:600;color:var(--text)}
+.hero .player-mock .hero-chip i{width:7px;height:7px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+.pm-head{gap:14px;margin-top:6px}
+.pm-titlerow{display:flex;align-items:center;justify-content:space-between;margin:22px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.07)}
+.pm-title{font-size:1.45rem;font-weight:700;letter-spacing:-.02em}
+.pm-sub{margin-top:2px;font-size:.82rem;color:var(--muted)}
+.pm-time{text-align:right;line-height:1.3;font-variant-numeric:tabular-nums;flex-shrink:0}
+.pm-time b{display:block;font-size:1.15rem;font-weight:800}
+.pm-time span{display:block;font-size:.72rem;color:var(--muted)}
+.pm-viz{display:block;position:relative;height:44px;margin:14px 0 22px;-webkit-mask-image:none;mask-image:none}
+.pm-viz::before{display:none}
+.pm-viz canvas{display:block;width:100%;height:44px;position:static}
+.pm-foot,.pm-eq{display:none}
+.pm-controls{gap:12px}
+.pm-btn-main{width:58px;height:58px}
+.pm-volume::-webkit-slider-thumb{background:var(--red);box-shadow:none}
+.pm-volume::-moz-range-thumb{background:var(--red);box-shadow:none}
+@media (max-width:960px){.hero .player-mock .hero-chip{left:-10px;top:-18px}}
+
+/* --- reference fix: floating chip on the card edge, no capsule, no % readout --- */
+.hero .player-mock,.hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{overflow:visible;border-color:rgba(255,255,255,.12)}
+.hero .player-mock:hover{border-color:rgba(255,255,255,.12)}
+.player-mock::before{display:none}
+.hero .player-mock>.hero-chip{position:absolute;z-index:3;top:-18px;left:-10px}
+.pm-controls{padding:0;border:0;border-radius:0;background:none;gap:12px}
+.pm-vol,.pm-vol .pm-btn{background:none}
+.pm-vol .pm-btn{width:44px;height:44px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--text)}
+.pm-vol .pm-btn:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.pm-vol-out{display:none}
+.pm-volume{margin:0 0 0 2px}
+html[data-theme="light"] .pm-vol .pm-btn{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.12)}
