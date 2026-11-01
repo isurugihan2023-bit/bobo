@@ -720,3 +720,40 @@ html[data-theme="light"] .copy-btn.copied{color:#059669;border-color:rgba(5,150,
 .hero-copy>.hero-heading{animation:none}
 .hero-copy>:nth-child(2){animation-delay:1.5s}.hero-copy>:nth-child(3){animation-delay:1.62s}.hero-copy>:nth-child(4){animation-delay:1.74s}.hero-visual{animation-delay:1.4s}
 @media (prefers-reduced-motion:reduce){.hwi{animation:none;transform:none;will-change:auto}}
+
+/* ===== Motion polish v2 (transform/opacity only; respects reduced motion) ===== */
+/* 1) Headline: words swing up from their baseline */
+.hwi{transform-origin:0 100%;transform:translate3d(0,115%,0) rotate(5deg);animation:hwUp .85s cubic-bezier(.16,.84,.3,1) calc(1.1s + var(--i,0) * .1s) forwards}
+@keyframes hwUp{to{transform:translate3d(0,0,0) rotate(0)}}
+/* 2) "MUSIC": a soft light sweep passes over the red word every few seconds */
+.hero-heading .hwi.accent{background:linear-gradient(100deg,var(--red) 0%,var(--red) 42%,#ff9aa6 50%,var(--red) 58%,var(--red) 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:hwUp .85s cubic-bezier(.16,.84,.3,1) calc(1.1s + var(--i,0) * .1s) forwards,hwShine 6s ease-in-out 2.4s infinite}
+html[data-theme="light"] .hero-heading .hwi.accent{background:linear-gradient(100deg,#c8102e 0%,#c8102e 42%,#ff6b80 50%,#c8102e 58%,#c8102e 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes hwShine{0%{background-position:100% 0}35%,100%{background-position:0 0}}
+/* 3) Live status dot gently pulses */
+.hero-chip i{position:relative}
+.hero-chip i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#34d399;opacity:0;animation:chipPulse 2.2s ease-out 2s infinite}
+@keyframes chipPulse{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
+/* 4) Buttons: small lift on hover, press on click */
+.btn,.nav-invite{transition:background .15s,color .15s,border-color .15s,transform .2s cubic-bezier(.2,.7,.2,1)}
+.btn:hover,.nav-invite:hover{transform:translateY(-2px)}
+.btn:active,.nav-invite:active{transform:translateY(0) scale(.98)}
+/* 5) Scroll reveal for all sections (was missing: the .reveal class had no styles) */
+.js .reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.3,1)}
+.js .reveal.visible{opacity:1;transform:none}
+.bento-grid>.reveal:nth-child(2),.how-grid>.reveal:nth-child(2){transition-delay:.08s}
+.bento-grid>.reveal:nth-child(3),.how-grid>.reveal:nth-child(3){transition-delay:.16s}
+.bento-grid>.reveal:nth-child(4){transition-delay:.06s}.bento-grid>.reveal:nth-child(5){transition-delay:.14s}.bento-grid>.reveal:nth-child(6){transition-delay:.22s}
+.faq-list>.reveal:nth-child(n){transition-delay:0s}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .hero-chip i::after{animation:none}
+  .hero-heading .hwi.accent{animation:none;transform:none}
+  .btn:hover,.nav-invite:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.hwi{animation:none!important;transform:none!important;will-change:auto}}
+
+/* ===== Player card: no border, very small soft drop shadow ===== */
+.player-mock,
+.hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.25)}
+html[data-theme="light"] .player-mock,
+html[data-theme="light"] .hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.14),0 1px 3px rgba(0,0,0,.08)}
