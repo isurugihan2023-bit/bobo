@@ -340,7 +340,7 @@ body:has(.intro:not(.intro-done)){overflow:hidden}
 /* ===== Hero: refined depth + one entrance sequence ===== */
 .hero{padding:calc(var(--nav) + 100px) 0 96px}
 .hero::before{width:640px;height:640px;right:-120px;top:-60px;opacity:.5;background:radial-gradient(closest-side,rgba(220,38,38,.22),transparent)}
-.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.2px);background-size:26px 26px;-webkit-mask-image:radial-gradient(70% 80% at 70% 35%,#000,transparent 75%);mask-image:radial-gradient(70% 80% at 70% 35%,#000,transparent 75%)}
+.hero::after{content:""}
 .hero-heading{text-wrap:balance}
 .btn-primary{background:linear-gradient(180deg,#de2b2b,#cf2020);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 24px -10px rgba(220,38,38,.7)}
 .btn-primary:hover{background:linear-gradient(180deg,#e02d2d,#d92323)}
@@ -365,9 +365,8 @@ body:has(.intro:not(.intro-done)){overflow:hidden}
 .hero-btns{gap:14px}
 @media (max-width:600px){.hero-heading{font-size:clamp(1.7rem,8vw,2.1rem)}.hero-sub{font-size:1.02rem;margin-bottom:30px}}
 
-/* Hero heading font: Resist Sans (add the file to fonts/; falls back to Manrope if missing) */
-@font-face{font-family:'Resist Sans';font-style:normal;font-weight:600 900;font-display:swap;src:url('fonts/resist-sans-bold.woff2') format('woff2')}
-.hero-heading{font-family:'Resist Sans','Manrope','Manrope Fallback',system-ui,sans-serif;font-synthesis:none;font-weight:700;letter-spacing:-.01em}
+/* Hero heading font: Manrope (self-hosted, no third-party font chain) */
+.hero-heading{font-family:'Manrope','Manrope Fallback',system-ui,sans-serif;font-synthesis:none;font-weight:700;letter-spacing:-.01em}
 
 /* ===== Product preview ===== */
 .preview-section{padding:104px 0}
@@ -478,22 +477,9 @@ html[data-theme="light"] .theme-toggle .tt-sun{opacity:1;transform:none}
 html[data-theme="light"] .theme-toggle .tt-moon{opacity:0;transform:rotate(60deg) scale(.6)}
 @media (prefers-reduced-motion:reduce){.theme-toggle .tt-knob,.theme-toggle svg{transition:none}}
 
-/* Theme switch: flat look (no gradients / inner shadows) */
-.theme-toggle{background:#23283a;border:1px solid rgba(255,255,255,.12);box-shadow:none}
-.theme-toggle .tt-knob{background:#dfe3f5;color:#23283a;box-shadow:none}
-html[data-theme="light"] .theme-toggle{background:#dbe7fb;border-color:rgba(0,0,0,.1);box-shadow:none}
-html[data-theme="light"] .theme-toggle .tt-knob{background:#fff;color:#d97706;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-
 /* Player card: remove the two stacked offset layers behind it (keep a normal soft shadow) */
 .player-mock{box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 40px 80px -40px rgba(0,0,0,.9)}
 html[data-theme="light"] .player-mock{box-shadow:0 40px 80px -44px rgba(0,0,0,.28)}
-
-/* Theme switch: minimal (small, neutral, no color blocks) */
-.theme-toggle{width:46px;height:26px;background:rgba(255,255,255,.08);border:1px solid var(--line2)}
-.theme-toggle .tt-knob{top:3px;left:3px;width:18px;height:18px;background:var(--muted);color:var(--bg);transform:translateX(20px)}
-.theme-toggle svg{width:11px;height:11px}
-html[data-theme="light"] .theme-toggle{background:rgba(0,0,0,.06);border-color:var(--line2)}
-html[data-theme="light"] .theme-toggle .tt-knob{background:var(--muted);color:#fff;box-shadow:none;transform:translateX(0)}
 
 
 /* ===== Player v2: live visualizer, listening timer, glow while playing, custom volume slider ===== */
