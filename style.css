@@ -645,3 +645,21 @@ html[data-theme="light"] .pm-titlerow{border-top-color:rgba(0,0,0,.08)}
 html[data-theme="light"] .pm-vol .pm-btn{background:rgba(0,0,0,.05);color:var(--text)}
 html[data-theme="light"] .pm-vol .pm-btn:hover{background:rgba(0,0,0,.1)}
 html[data-theme="light"] .pm-btn-main{color:#fff}
+
+/* Play button: same size as the volume button (44px) */
+.pm-btn-main{width:44px;height:44px;box-shadow:none}
+.pm-btn-main svg{width:16px;height:16px}
+.hero:has(#hero-toggle[aria-pressed="true"]) .pm-btn-main::after{inset:-4px}
+
+/* ===== Display font: Big Shoulders Display for headings (body stays Manrope) ===== */
+:root{--display:'Big Shoulders Display','Oswald','Bebas Neue','Arial Narrow',Impact,sans-serif}
+.hero-heading,.sec-title,.cta-title,.pm-title,.stat-num,.feat-card h3,.how-card h3,.nav-logo span{font-family:var(--display);text-transform:uppercase;font-synthesis:none}
+.hero-heading{font-weight:800;font-size:clamp(2.9rem,6.4vw,5.2rem);line-height:.95;letter-spacing:-.005em;max-width:12ch;text-wrap:balance}
+.sec-title{font-weight:800;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1;letter-spacing:0;max-width:22ch}
+.platforms-section .sec-title{font-weight:700;font-size:clamp(1.3rem,2.6vw,1.8rem);color:var(--sub);max-width:none}
+.cta-title{font-weight:800;font-size:clamp(2.1rem,4.4vw,3.2rem);line-height:1;letter-spacing:0;max-width:18ch}
+.pm-title{font-weight:800;font-size:1.8rem;line-height:1;letter-spacing:.005em}
+.stat-num{font-weight:800;font-size:clamp(2.4rem,4.6vw,3.4rem);line-height:1;letter-spacing:0}
+.feat-card h3,.how-card h3{font-weight:700;font-size:1.4rem;line-height:1.05;letter-spacing:.01em}
+.nav-logo span:first-of-type{font-weight:800;font-size:1.35rem;letter-spacing:.02em}
+@media (max-width:600px){.hero-heading{font-size:clamp(2.6rem,12.5vw,3.4rem);max-width:none}}
