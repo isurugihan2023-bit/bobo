@@ -722,13 +722,6 @@ html[data-theme="light"] .copy-btn.copied{color:#059669;border-color:rgba(5,150,
 @media (prefers-reduced-motion:reduce){.hwi{animation:none;transform:none;will-change:auto}}
 
 /* ===== Motion polish v2 (transform/opacity only; respects reduced motion) ===== */
-/* 1) Headline: words swing up from their baseline */
-.hwi{transform-origin:0 100%;transform:translate3d(0,115%,0) rotate(5deg);animation:hwUp .85s cubic-bezier(.16,.84,.3,1) calc(1.1s + var(--i,0) * .1s) forwards}
-@keyframes hwUp{to{transform:translate3d(0,0,0) rotate(0)}}
-/* 2) "MUSIC": a soft light sweep passes over the red word every few seconds */
-.hero-heading .hwi.accent{background:linear-gradient(100deg,var(--red) 0%,var(--red) 42%,#ff9aa6 50%,var(--red) 58%,var(--red) 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:hwUp .85s cubic-bezier(.16,.84,.3,1) calc(1.1s + var(--i,0) * .1s) forwards,hwShine 6s ease-in-out 2.4s infinite}
-html[data-theme="light"] .hero-heading .hwi.accent{background:linear-gradient(100deg,#c8102e 0%,#c8102e 42%,#ff6b80 50%,#c8102e 58%,#c8102e 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-@keyframes hwShine{0%{background-position:100% 0}35%,100%{background-position:0 0}}
 /* 3) Live status dot gently pulses */
 .hero-chip i{position:relative}
 .hero-chip i::after{content:"";position:absolute;inset:0;border-radius:50%;background:#34d399;opacity:0;animation:chipPulse 2.2s ease-out 2s infinite}
@@ -747,7 +740,6 @@ html[data-theme="light"] .hero-heading .hwi.accent{background:linear-gradient(10
 @media (prefers-reduced-motion:reduce){
   .js .reveal{opacity:1;transform:none;transition:none}
   .hero-chip i::after{animation:none}
-  .hero-heading .hwi.accent{animation:none;transform:none}
   .btn:hover,.nav-invite:hover{transform:none}
 }
 @media (prefers-reduced-motion:reduce){.hwi{animation:none!important;transform:none!important;will-change:auto}}
