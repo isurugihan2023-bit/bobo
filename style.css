@@ -273,14 +273,13 @@ html,body{overflow-x:clip}
 }
 
 /* ===== Intro splash ===== */
-.intro{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#000;animation:introOut .7s cubic-bezier(.65,0,.35,1) 1.7s forwards}
-.intro-word{font-family:var(--font);font-weight:800;font-size:clamp(2.6rem,9vw,5.5rem);letter-spacing:-.045em;line-height:1;color:#fff;display:flex;align-items:baseline;opacity:0;transform:translateY(14px);animation:introIn .8s cubic-bezier(.2,.7,.2,1) .15s forwards,introWordOut .5s ease 1.55s forwards}
+.intro{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#000;will-change:opacity;animation:introOut .4s ease-out 1.05s forwards}
+.intro-word{font-family:var(--font);font-weight:800;font-size:clamp(2.6rem,9vw,5.5rem);letter-spacing:-.045em;line-height:1;color:#fff;display:flex;align-items:baseline;opacity:0;transform:translate3d(0,14px,0);will-change:opacity,transform;animation:introIn .5s cubic-bezier(.2,.7,.2,1) .05s forwards,introWordOut .3s ease .85s forwards}
 .intro-dot{color:var(--red2);display:inline-block;transform:scale(0);transform-origin:50% 80%;animation:introDot .5s cubic-bezier(.3,1.6,.5,1) .85s forwards}
-@keyframes introIn{to{opacity:1;transform:none}}
+@keyframes introIn{to{opacity:1;transform:translate3d(0,0,0)}}
 @keyframes introDot{to{transform:scale(1)}}
-@keyframes introWordOut{to{opacity:0;transform:translateY(-8px)}}
+@keyframes introWordOut{to{opacity:0;transform:translate3d(0,-8px,0)}}
 @keyframes introOut{to{opacity:0;visibility:hidden;pointer-events:none}}
-body:has(.intro:not(.intro-done)){overflow:hidden}
 @media (prefers-reduced-motion:reduce){.intro{animation:introOut .3s ease .4s forwards!important}.intro-word,.intro-dot{animation:none!important;opacity:1;transform:none}}
 
 /* ===== Hero upgrade: live spectrum + richer player ===== */
@@ -466,13 +465,13 @@ html[data-theme="light"] .player-mock{box-shadow:0 30px 60px -40px rgba(0,0,0,.3
 .faq-item p{max-width:80ch}
 
 /* Theme toggle: flat 2D icon button, same size/radius/border as the nav buttons (moon = dark, sun = light) */
-.theme-toggle{display:inline-grid;place-items:center;flex-shrink:0;width:42px;height:42px;padding:0;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.theme-toggle{display:inline-grid;place-items:center;flex-shrink:0;width:42px;height:42px;padding:0;border-radius:10px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:background .15s,color .15s}
 .theme-toggle:hover{background:rgba(255,255,255,.06);color:var(--text)}
 .theme-toggle .tt-knob{display:grid;place-items:center;width:18px;height:18px;position:static;transform:none;background:none;box-shadow:none;border-radius:0;color:inherit}
 .theme-toggle svg{grid-area:1/1;width:18px;height:18px;transition:opacity .15s}
 .theme-toggle .tt-sun{opacity:0;transform:none}
 .theme-toggle .tt-moon{opacity:1;transform:none}
-html[data-theme="light"] .theme-toggle{background:transparent;border-color:var(--line2);box-shadow:none}
+html[data-theme="light"] .theme-toggle{background:transparent;box-shadow:none}
 html[data-theme="light"] .theme-toggle:hover{background:rgba(0,0,0,.05);color:var(--text)}
 html[data-theme="light"] .theme-toggle .tt-knob{transform:none;background:none;box-shadow:none;color:inherit}
 html[data-theme="light"] .theme-toggle .tt-sun{opacity:1;transform:none}
