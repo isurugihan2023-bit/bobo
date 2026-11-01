@@ -749,3 +749,9 @@ html[data-theme="light"] .copy-btn.copied{color:#059669;border-color:rgba(5,150,
 .hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.25)}
 html[data-theme="light"] .player-mock,
 html[data-theme="light"] .hero:has(#hero-toggle[aria-pressed="true"]) .player-mock{border:0;box-shadow:0 4px 14px -4px rgba(0,0,0,.14),0 1px 3px rgba(0,0,0,.08)}
+
+/* Mobile: center the "Streams from" row */
+@media (max-width:600px){
+  .hero-from{align-self:stretch;width:100%;justify-content:center;text-align:center}
+  .hero-from span{width:100%;text-align:center}
+}
