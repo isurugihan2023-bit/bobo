@@ -1,4 +1,4 @@
-"use strict";!function(){var e=function(e,t){"requestIdleCallback"in window?requestAnimationFrame(function(){window.requestIdleCallback(e,{timeout:t||2e3})}):setTimeout(e,60)},t=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,n=document.getElementById("navbar"),i=!1;function o(){i=!1,n&&n.classList.toggle("scrolled",window.scrollY>20)}window.addEventListener("scroll",function(){i||(i=!0,requestAnimationFrame(o))},{passive:!0}),e(o),e(function(){var e=document.querySelector(".hamburger"),t=document.querySelector(".nav-inner");e&&t&&e.addEventListener("click",function(){var n=t.classList.toggle("nav-open");e.setAttribute("aria-expanded",n?"true":"false"),e.setAttribute("aria-label",n?"Close menu":"Open menu")})}),e(function(){var e=document.querySelectorAll(".reveal");if(e.length&&"IntersectionObserver"in window){var t=new IntersectionObserver(function(e){var n=[];e.forEach(function(e){e.isIntersecting&&(t.unobserve(e.target),n.push(e.target))}),n.length&&requestAnimationFrame(function(){n.forEach(function(e){e.classList.add("visible")})})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});e.forEach(function(e){t.observe(e)})}else e.forEach(function(e){e.classList.add("visible")})}),e(function(){var e=document.querySelectorAll(".stat-number");if(e.length)if("IntersectionObserver"in window){var n=!1,i=new IntersectionObserver(function(t){t.forEach(function(t){t.isIntersecting&&!n&&(n=!0,e.forEach(r),i.disconnect())})},{threshold:.3}),o=document.getElementById("stats");o?i.observe(o):e.forEach(function(e){i.observe(e)})}else e.forEach(r);function a(e){e.textContent=e.getAttribute("data-target")+(e.getAttribute("data-suffix")||"")}function r(e){var n=parseFloat(e.getAttribute("data-target")),i=e.getAttribute("data-suffix")||"";if(isFinite(n))if(t)a(e);else{var o=null;requestAnimationFrame(function t(r){null===o&&(o=r);var c=Math.min((r-o)/1600,1),s=1-Math.pow(1-c,3),l=n*s;e.textContent=(n%1!=0?l.toFixed(2):Math.ceil(l))+i,c<1?requestAnimationFrame(t):a(e)})}}}),e(function(){var e=document.getElementById("hero-servers"),t=document.getElementById("hero-members"),n=document.getElementById("hero-uptime"),i=document.getElementById("hero-ping");function o(){if(!document.hidden){var o=null;try{o=new AbortController}catch(e){o=null}var a=setTimeout(function(){o&&o.abort()},5e3),r=o?{signal:o.signal,cache:"no-store"}:{cache:"no-store"};fetch("/api/bot-stats",r).then(function(e){if(clearTimeout(a),!e.ok)throw new Error("bad status");return e.json()}).then(function(o){if(o){var a=o.servers<100?100:o.servers,r=o.members<100?100:o.members;e&&(e.textContent=a+"+"),t&&(t.textContent=Number(r).toLocaleString("en-US")+"+"),n&&o.uptime&&(n.textContent=o.uptime),(!window.lastPingTime||Date.now()-window.lastPingTime>3e4)&&(window.lastFakePing=38+Math.floor(13*Math.random())+"ms",window.lastPingTime=Date.now()),i&&(i.textContent=window.lastFakePing);var c=document.getElementById("server-count-stat");c&&"0"!==c.textContent&&"0+"!==c.textContent&&(c.textContent=a+"+");var s=document.getElementById("user-count-stat");s&&"0"!==s.textContent&&"0+"!==s.textContent&&(s.textContent=Number(r).toLocaleString("en-US")+"+");var l=document.getElementById("about-ping");l&&(l.textContent=window.lastFakePing)}}).catch(function(){var f=[["hero-servers","100+"],["hero-members","100+"],["hero-uptime","99.9%"],["hero-ping","2ms"],["server-count-stat","100+"],["user-count-stat","100+"],["about-ping","2ms"]];f.forEach(function(p){var d=document.getElementById(p[0]);d&&(d.textContent=p[1])})})}}(e||t||n||i)&&(o(),setInterval(o,3e4),document.addEventListener("visibilitychange",function(){document.hidden||o()}))}),e(function(){
+"use strict";!function(){var e=function(e,t){"requestIdleCallback"in window?requestAnimationFrame(function(){window.requestIdleCallback(e,{timeout:t||2e3})}):setTimeout(e,60)},t=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,n=document.getElementById("navbar"),i=!1;function o(){i=!1,n&&n.classList.toggle("scrolled",window.scrollY>20)}window.addEventListener("scroll",function(){i||(i=!0,requestAnimationFrame(o))},{passive:!0}),e(o),e(function(){var e=document.querySelector(".hamburger"),t=document.querySelector(".nav-inner");e&&t&&e.addEventListener("click",function(){var n=t.classList.toggle("nav-open");e.setAttribute("aria-expanded",n?"true":"false"),e.setAttribute("aria-label",n?"Close menu":"Open menu")})}),e(function(){var e=document.querySelectorAll(".reveal");if(e.length&&"IntersectionObserver"in window){var t=new IntersectionObserver(function(e){var n=[];e.forEach(function(e){e.isIntersecting&&(t.unobserve(e.target),n.push(e.target))}),n.length&&requestAnimationFrame(function(){n.forEach(function(e){e.classList.add("visible")})})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});e.forEach(function(e){t.observe(e)})}else e.forEach(function(e){e.classList.add("visible")})}),e(function(){var e=document.querySelectorAll(".stat-number");if(e.length)if("IntersectionObserver"in window){var n=!1,i=new IntersectionObserver(function(t){t.forEach(function(t){t.isIntersecting&&!n&&(n=!0,e.forEach(r),i.disconnect())})},{threshold:.3}),o=document.getElementById("stats");o?i.observe(o):e.forEach(function(e){i.observe(e)})}else e.forEach(r);function a(e){e.textContent=e.getAttribute("data-target")+(e.getAttribute("data-suffix")||"")}function r(e){var n=parseFloat(e.getAttribute("data-target")),i=e.getAttribute("data-suffix")||"";if(isFinite(n))if(t)a(e);else{var o=null;requestAnimationFrame(function t(r){null===o&&(o=r);var c=Math.min((r-o)/1600,1),s=1-Math.pow(1-c,3),l=n*s;e.textContent=(n%1!=0?l.toFixed(2):Math.ceil(l))+i,c<1?requestAnimationFrame(t):a(e)})}}}),e(function(){var e=document.getElementById("hero-servers"),t=document.getElementById("hero-members"),n=document.getElementById("hero-uptime"),i=document.getElementById("hero-ping");function o(){if(!document.hidden){var o=null;try{o=new AbortController}catch(e){o=null}var a=setTimeout(function(){o&&o.abort()},5e3),r=o?{signal:o.signal,cache:"no-store"}:{cache:"no-store"};fetch("/api/bot-stats",r).then(function(e){if(clearTimeout(a),!e.ok)throw new Error("bad status");return e.json()}).then(function(o){if(o){var a=o.servers<100?100:o.servers,r=o.members<100?100:o.members;e&&(e.textContent=a+"+"),t&&(t.textContent=Number(r).toLocaleString("en-US")+"+"),n&&o.uptime&&(n.textContent=o.uptime),(!window.lastPingTime||Date.now()-window.lastPingTime>3e4)&&(window.lastFakePing=38+Math.floor(13*Math.random())+"ms",window.lastPingTime=Date.now()),i&&(i.textContent=window.lastFakePing);var c=document.getElementById("server-count-stat");c&&"0"!==c.textContent&&"0+"!==c.textContent&&(c.setAttribute("data-target",a),c.textContent=a+"+");var s=document.getElementById("user-count-stat");s&&"0"!==s.textContent&&"0+"!==s.textContent&&(s.setAttribute("data-target",r),s.textContent=Number(r).toLocaleString("en-US")+"+");var l=document.getElementById("about-ping");l&&(l.textContent=window.lastFakePing)}}).catch(function(){var f=[["hero-servers","100+"],["hero-members","100+"],["hero-uptime","99.9%"],["hero-ping","2ms"],["server-count-stat","100+"],["user-count-stat","100+"],["about-ping","2ms"]];f.forEach(function(p){var d=document.getElementById(p[0]);d&&(d.textContent=p[1])})})}}(e||t||n||i)&&(o(),setInterval(o,3e4),document.addEventListener("visibilitychange",function(){document.hidden||o()}))}),e(function(){
   /* Radio engine: hero player card drives one shared <audio>
      (reuses old lofi stream URL and 40% default volume).
      src is set only when playback is first requested (autoplay or gesture). */
@@ -106,7 +106,8 @@
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",bind);}else{bind();}
 })();
 
-/* Phase B (c): keyboard-accessible mobile menu (Escape closes, focus returns) + active-section indicator. Existing hamburger toggle untouched. */
+/* Phase B (c): keyboard-accessible mobile menu (Escape closes, focus returns) + active-section indicator.
+   FIX: "Stats" no longer stays highlighted after you scroll past it. */
 (function(){
   function init(){
     var toggle=document.querySelector(".hamburger");
@@ -124,24 +125,220 @@
         if(inner.classList.contains("nav-open")&&!inner.contains(e.target)){inner.classList.remove("nav-open");toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Open menu");}
       });
     }
+
     var links=Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
-    if(!links.length||!("IntersectionObserver" in window))return;
-    var map={};links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a;});
-    var ids=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
-    if(!ids.length)return;
-    var current=null;
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){
-          var id=en.target.id;
-          if(current!==id){current=id;links.forEach(function(a){a.classList.toggle("active",a===map[id]);});}
-        }
+    if(!links.length)return;
+
+    /* "About" points to an empty anchor that sits right before #features (merged section),
+       so it is not tracked; "Features" covers that area. */
+    var items=[];
+    links.forEach(function(a){
+      var id=a.getAttribute("href").slice(1);
+      if(id==="about")return;
+      var el=document.getElementById(id);
+      if(el)items.push({el:el,link:a});
+    });
+    if(!items.length)return;
+
+    var ticking=false;
+    function update(){
+      ticking=false;
+      var probe=Math.max(120,window.innerHeight*0.3);
+      var cur=null;
+      items.forEach(function(it){
+        var r=it.el.getBoundingClientRect();
+        if(r.top<=probe&&r.bottom>probe)cur=it;
       });
-    },{rootMargin:"-35% 0px -55% 0px",threshold:0});
-    ids.forEach(function(el){obs.observe(el);});
-    var hero=document.getElementById("home");
-    function clearActive(){current=null;links.forEach(function(a){a.classList.remove("active");});}
-    if(hero){var hobs=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)clearActive();});},{rootMargin:"0px 0px -85% 0px",threshold:0});hobs.observe(hero);}
+      links.forEach(function(a){
+        var on=!!cur&&a===cur.link;
+        a.classList.toggle("active",on);
+        if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");
+      });
+    }
+    function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
+    window.addEventListener("scroll",onScroll,{passive:true});
+    window.addEventListener("resize",onScroll);
+    update();
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+/* Sticky mobile CTA: visible once the hero is out of view, hidden while the bottom CTA is in view. */
+(function(){
+  function init(){
+    var bar=document.getElementById("sticky-cta"),hero=document.getElementById("home"),cta=document.getElementById("home-cta");
+    if(!bar||!hero||!("IntersectionObserver" in window))return;
+    var heroIn=true,ctaIn=false;
+    function upd(){bar.classList.toggle("show",!heroIn&&!ctaIn);}
+    new IntersectionObserver(function(es){es.forEach(function(e){heroIn=e.isIntersecting;});upd();},{threshold:0}).observe(hero);
+    if(cta)new IntersectionObserver(function(es){es.forEach(function(e){ctaIn=e.isIntersecting;});upd();},{threshold:0}).observe(cta);
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+/* Command category tabs */
+(function(){
+  function init(){
+    var tabs=document.querySelectorAll(".cmd-tab"),rows=document.querySelectorAll(".cmd-row[data-cat]");
+    if(!tabs.length||!rows.length)return;
+    function apply(f){
+      var first=true;
+      rows.forEach(function(r){
+        var show=f==="all"||r.getAttribute("data-cat")===f;
+        r.hidden=!show;
+        r.classList.toggle("is-first",show&&first);
+        if(show)first=false;
+      });
+      tabs.forEach(function(t){
+        var on=t.getAttribute("data-filter")===f;
+        t.classList.toggle("active",on);
+        t.setAttribute("aria-pressed",on?"true":"false");
+      });
+    }
+    tabs.forEach(function(t){t.addEventListener("click",function(){apply(t.getAttribute("data-filter"));});});
+    apply("all");
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+
+/* Theme toggle: dark (default) <-> light. Saved in localStorage; the early inline script in <head> applies it before first paint. */
+(function(){
+  function init(){
+    var btn=document.getElementById("theme-toggle");
+    if(!btn)return;
+    var root=document.documentElement;
+    var meta=document.querySelector('meta[name="theme-color"]');
+    function isLight(){return root.getAttribute("data-theme")==="light";}
+    function paint(){
+      var light=isLight();
+      btn.setAttribute("aria-label",light?"Switch to dark theme":"Switch to light theme");
+      btn.setAttribute("aria-checked",light?"true":"false");
+      btn.setAttribute("title",light?"Switch to dark theme":"Switch to light theme");
+      if(meta)meta.setAttribute("content",light?"#fafafa":"#09090b");
+    }
+    btn.addEventListener("click",function(){
+      var next=isLight()?"dark":"light";
+      if(next==="light")root.setAttribute("data-theme","light");else root.removeAttribute("data-theme");
+      try{localStorage.setItem("bobo-theme",next);}catch(e){}
+      paint();
+    });
+    paint();
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+
+/* Player v2: "Aura" ring visualizer (simulated: the stream is cross-origin, so real audio analysis is not possible), listening timer, volume readout, lock-screen controls. */
+(function(){
+  function init(){
+    var audio=document.getElementById("lofi-audio"),viz=document.getElementById("hero-viz");
+    if(!audio||!viz)return;
+    var timeEl=document.getElementById("hero-time"),vol=document.getElementById("hero-volume"),out=document.getElementById("hero-vol-out"),tog=document.getElementById("hero-toggle");
+    var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var S=150,dpr=Math.min(window.devicePixelRatio||1,2),cvs=document.createElement("canvas"),ctx=cvs.getContext("2d");
+    if(!ctx)return;
+    cvs.width=cvs.height=Math.round(S*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    viz.insertBefore(cvs,viz.firstChild);
+
+    var R=S*.335,M=140,TAU=Math.PI*2;
+    var LAYERS=[{ph:0,a:.55},{ph:2.1,a:.38},{ph:4.2,a:.3}];
+    var level=0,playing=false,running=false,visible=true;
+
+    function isLight(){return document.documentElement.getAttribute("data-theme")==="light";}
+    function ribbon(t,lv,ph,alpha,fill){
+      var i,th,th0,r,w,ang,ox=[],oy=[],ix=[],iy=[];
+      for(i=0;i<M;i++){
+        ang=i/M*TAU;
+        w=lv*(.5*Math.sin(3*ang+t*1.1+ph)+.35*Math.sin(5*ang-t*.8+ph*1.7)+.25*Math.sin(2*ang+t*.6-ph));
+        r=R+w*R*.17;
+        th=.8+lv*(2.2+6.5*(.5+.5*Math.sin(2*ang+t*.9+ph)));
+        ox.push(S/2+Math.cos(ang)*(r+th));oy.push(S/2+Math.sin(ang)*(r+th));
+        ix.push(S/2+Math.cos(ang)*(r-th));iy.push(S/2+Math.sin(ang)*(r-th));
+      }
+      ctx.globalAlpha=alpha;ctx.fillStyle=fill;
+      ctx.beginPath();
+      ctx.moveTo(ox[0],oy[0]);
+      for(i=1;i<M;i++)ctx.lineTo(ox[i],oy[i]);
+      ctx.closePath();
+      ctx.moveTo(ix[0],iy[0]);
+      for(i=M-1;i>=0;i--)ctx.lineTo(ix[i],iy[i]);
+      ctx.closePath();
+      ctx.fill("evenodd");
+    }
+    function frame(now){
+      running=false;
+      var t=now/1000;
+      var target=playing?(reduce?.5:.55+.3*Math.sin(t*.7)+.15*Math.sin(t*1.9)):0;
+      var d=target-level;
+      if(Math.abs(d)>.003)level+=d*(playing?.05:.04);else level=target;
+      var light=isLight(),g=ctx.createLinearGradient(0,0,S,S);
+      g.addColorStop(0,light?"#c8102e":"#ff3b4e");g.addColorStop(1,light?"#e8394d":"#ff8a95");
+      ctx.clearRect(0,0,S,S);
+      ctx.globalCompositeOperation=light?"source-over":"lighter";
+      var n=level<.02?1:LAYERS.length;
+      for(var k=0;k<n;k++)ribbon(t,level,LAYERS[k].ph,LAYERS[k].a,g);
+      ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";
+      var moving=Math.abs(target-level)>.003;
+      if((playing&&!reduce||moving)&&visible&&!document.hidden){running=true;requestAnimationFrame(frame);}
+    }
+    function start(){if(!running){running=true;requestAnimationFrame(frame);}}
+    start();
+    if("IntersectionObserver" in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible)start();},{threshold:0}).observe(viz);}
+    document.addEventListener("visibilitychange",function(){if(!document.hidden)start();});
+    if("MutationObserver" in window)new MutationObserver(start).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+    var secs=0,timer=null;
+    function fmt(n){var h=Math.floor(n/3600),m=Math.floor(n%3600/60),s=n%60;return h?h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s:m+":"+(s<10?"0":"")+s;}
+    function tick(){secs++;if(timeEl)timeEl.textContent=fmt(secs);}
+    function setPlaying(p){
+      playing=p;start();
+      if(p&&!timer)timer=setInterval(tick,1000);
+      if(!p&&timer){clearInterval(timer);timer=null;}
+      if("mediaSession" in navigator){try{navigator.mediaSession.playbackState=p?"playing":"paused";}catch(e){}}
+    }
+    audio.addEventListener("playing",function(){setPlaying(true);});
+    ["pause","error","ended"].forEach(function(ev){audio.addEventListener(ev,function(){setPlaying(false);});});
+
+    function syncVol(){if(out)out.textContent=audio.muted||audio.volume===0?"Muted":Math.round(audio.volume*100)+"%";}
+    audio.addEventListener("volumechange",syncVol);
+    if(vol&&"MutationObserver" in window)new MutationObserver(syncVol).observe(vol,{attributes:true,attributeFilter:["style"]});
+    syncVol();setTimeout(syncVol,400);
+
+    if("mediaSession" in navigator&&window.MediaMetadata){
+      try{
+        navigator.mediaSession.metadata=new MediaMetadata({title:"Chill & relax",artist:"BOBO",album:"Lo-fi radio",artwork:[{src:"images/bobo-round.png",type:"image/png"}]});
+        navigator.mediaSession.setActionHandler("play",function(){if(audio.paused&&tog)tog.click();});
+        navigator.mediaSession.setActionHandler("pause",function(){if(!audio.paused&&tog)tog.click();});
+      }catch(e){}
+    }
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
+})();
+
+/* Player controls v3: speaker icon follows the volume level (muted / low / high). */
+(function(){
+  function init(){
+    var audio=document.getElementById("lofi-audio"),btn=document.getElementById("hero-mute");
+    if(!audio||!btn)return;
+    var BASE='<path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3z"/>';
+    var ICONS={
+      muted:BASE+'<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 9l6 6M22 9l-6 6"/>',
+      low:BASE+'<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 9.5a4 4 0 010 5"/>',
+      high:BASE+'<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12"/>'
+    };
+    var last="";
+    function paint(){
+      var k=(audio.muted||audio.volume===0)?"muted":(audio.volume<.5?"low":"high");
+      if(k===last)return;
+      last=k;
+      btn.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">'+ICONS[k]+'</svg>';
+    }
+    audio.addEventListener("volumechange",function(){last="";paint();});
+    btn.addEventListener("click",function(){setTimeout(function(){last="";paint();},0);});
+    paint();setTimeout(function(){last="";paint();},400);
   }
   if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
 })();
