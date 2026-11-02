@@ -904,6 +904,39 @@ html[data-theme="light"] .pm-live{background:rgba(212,0,31,.09)}
   .how-card::after{display:none}
 }
 
+/* ===== Stats: three separate boxes + simple entrance / hover animation ===== */
+.stats-strip{padding:16px 0 0}
+.stats-strip-inner{background:none;border-radius:0;overflow:visible;gap:16px}
+.stat-item{background:var(--card);border:0;border-radius:var(--r);padding:36px 16px;box-shadow:none}
+.stat-item+.stat-item::before{display:none}
+.stat-item:hover .stat-num{color:var(--red)}
+.stat-num{transition:color .25s}
+/* pop-up entrance (one box after another), then a tiny hover lift */
+.js .stats-strip-inner>.stat-item.reveal{opacity:0;transform:none;transition:background .25s,transform .25s;transition-delay:0s}
+.js .stats-strip-inner>.stat-item.reveal.visible{opacity:1;animation:statPop .6s cubic-bezier(.3,1.5,.5,1) backwards}
+.js .stats-strip-inner>.stat-item.reveal.visible:nth-child(2){animation-delay:.12s}
+.js .stats-strip-inner>.stat-item.reveal.visible:nth-child(3){animation-delay:.24s}
+@keyframes statPop{from{opacity:0;transform:scale(.8) translateY(18px)}to{opacity:1;transform:none}}
+@media (hover:hover) and (pointer:fine){.stat-item:hover{background:var(--card2);transform:translateY(-3px)}}
+html[data-theme="light"] .stats-strip-inner{background:none;box-shadow:none}
+html[data-theme="light"] .stat-item{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+html[data-theme="light"] .stat-item:hover{background:#fff;box-shadow:0 8px 20px -8px rgba(0,0,0,.18)}
+@media (prefers-reduced-motion:reduce){.js .stats-strip-inner>.stat-item.reveal.visible{animation:none}.stat-item:hover{transform:none}}
+@media (max-width:600px){.stats-strip-inner{gap:10px}.stat-item{padding:22px 6px;border-radius:12px}}
+
+/* ===== Platforms: slightly smaller ===== */
+.platforms-section{padding-top:72px}
+.platforms-section .sec-head{margin-bottom:32px}
+.platforms-section .sec-title{font-size:.95rem}
+.platform-grid{gap:12px;max-width:920px;margin:0 auto}
+.platform-icon{height:44px;margin-bottom:16px}
+.platform-icon .fa-svg{height:44px}
+.platform-icon .fa-youtube{height:40px}
+.platform-card{padding:12px 4px}
+.platform-card h3{font-size:1.08rem;margin-bottom:8px}
+.platform-card p{font-size:.84rem;line-height:1.6}
+@media (max-width:860px){.platform-grid{gap:28px}.platform-icon{height:40px}.platform-icon .fa-svg{height:40px}.platform-icon .fa-youtube{height:36px}}
+
 /* Hero alignment: content block centered in the first screen, room for the scroll cue */
 .hero{padding:calc(var(--nav) + 56px) 0 96px}
 .hero-grid{align-items:center}
@@ -924,3 +957,35 @@ html[data-theme="light"] .pm-live{background:rgba(212,0,31,.09)}
   .sec-head{margin-bottom:32px;padding:0 4px}
   .cmd-tabs{gap:8px;margin-bottom:20px}
 }
+
+
+/* ===== Feature icons: modern stroke icons in a glowing tile ===== */
+.feat-icon{position:relative;width:48px;height:48px;border-radius:14px;color:var(--red);background:linear-gradient(145deg,rgba(255,45,69,.22),rgba(255,45,69,.05));border:0;box-shadow:inset 0 0 0 1px rgba(255,45,69,.28),0 8px 22px -10px rgba(234,28,44,.6);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,background .3s}
+.feat-icon .ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.feat-card:hover .feat-icon{transform:translateY(-2px) rotate(-4deg);background:linear-gradient(145deg,var(--red2),#ff5266);color:#fff;box-shadow:0 12px 26px -10px rgba(234,28,44,.85)}
+.feat-card:hover .feat-icon .ico{transform:scale(1.1)}
+html[data-theme="light"] .feat-icon{background:linear-gradient(145deg,rgba(212,0,31,.14),rgba(212,0,31,.04));box-shadow:inset 0 0 0 1px rgba(212,0,31,.25),0 6px 16px -10px rgba(212,0,31,.5)}
+html[data-theme="light"] .feat-card:hover .feat-icon{background:linear-gradient(145deg,#d4001f,#ee3a50);color:#fff}
+@media (prefers-reduced-motion:reduce){.feat-icon,.feat-icon .ico{transition:none}.feat-card:hover .feat-icon{transform:none}}
+
+/* ===== Feature icons: clean & minimal (overrides the glow/gradient version above) ===== */
+.feat-icon{width:44px;height:44px;border-radius:11px;color:var(--text);background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line);transition:color .2s,background .2s,box-shadow .2s}
+.feat-icon .ico{width:22px;height:22px;stroke-width:1.7;transition:none}
+.feat-card:hover .feat-icon{transform:none;color:var(--red);background:rgba(255,45,69,.08);box-shadow:inset 0 0 0 1px rgba(255,45,69,.3)}
+.feat-card:hover .feat-icon .ico{transform:none}
+html[data-theme="light"] .feat-icon{color:var(--text);background:rgba(0,0,0,.04);box-shadow:inset 0 0 0 1px var(--line)}
+html[data-theme="light"] .feat-card:hover .feat-icon{color:var(--red);background:rgba(212,0,31,.07);box-shadow:inset 0 0 0 1px rgba(212,0,31,.3)}
+
+/* ===== Feature icons: bare line icon, no tile (final) ===== */
+.feat-icon,.feat-card:hover .feat-icon,html[data-theme="light"] .feat-icon,html[data-theme="light"] .feat-card:hover .feat-icon{width:auto;height:auto;display:block;border-radius:0;background:none;box-shadow:none;transform:none;color:var(--red);margin-bottom:18px}
+.feat-icon .ico,.feat-card:hover .feat-icon .ico{width:26px;height:26px;stroke-width:1.6;transform:none}
+
+/* ===== Player avatar: optically center the BOBO "B" (its open right side makes it look left-heavy) ===== */
+.pm-avatar{overflow:hidden;border-radius:50%;background:#000;outline:2px solid transparent;outline-offset:3px;transition:outline-color .3s}
+.pm-avatar::before,.hero:has(#hero-toggle[aria-pressed="true"]) .pm-avatar::before{display:none}
+.pm-avatar img{width:100%;height:100%;border-radius:0;object-fit:cover;transform:scale(1.14) translateX(.4px)}
+.hero:has(#hero-toggle[aria-pressed="true"]) .pm-avatar{outline-color:var(--red)}
+
+/* ===== Copy button "copied" tick: red (was green) ===== */
+.copy-btn.copied{color:var(--red);border-color:rgba(255,45,69,.5);background:rgba(255,45,69,.1)}
+html[data-theme="light"] .copy-btn.copied{color:var(--red);border-color:rgba(212,0,31,.45);background:rgba(212,0,31,.08)}
